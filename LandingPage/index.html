@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Landing Page</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <header id="header">
+        <div id="header-content">
+            <img id="header-img" src="img/cabo-jack.png" alt="logo" />
+            <nav id="nav-bar">
+                <a href="#cabos-section" class="nav-link">Cabos</a>
+                <a href="#video" class="nav-link">Video</a>
+                <a href="#form" class="nav-link">Vendas</a>
+            </nav>
+        </div>
+    </header>
+    <main id="main">
+        <div id="cabos-section" class="content-box">
+            <h2 id="cabos">Nossos cabos.</h2>
+            <p>Nossos cabos são confeccionados com plugs de primeira linha da marca Neutrik.</p>
+            <div class="plugs-container" id="plugs-container">
+                <figure class="fig-cont">
+                    <img class="plugs" src="img\plug_p10_mono.jpg" alt="P10-mono">
+                    <figcaption>P10-Mono</figcaption>
+                </figure>
+                <figure class="fig-cont">
+                    <img class="plugs" src="img\plug_p10_stereo.jpg" alt="P10-ST">
+                    <figcaption>P10-ST</figcaption>
+                </figure>
+                <figure class="fig-cont">
+                    <img class="plugs" src="img\xlr.jpg" alt="XLR">
+                    <figcaption>XLR</figcaption>
+                </figure>
+            </div>
+        </div>
+        <div id="video-section" class="content-box">
+            <h2>Pretty woman</h2>
+            <iframe id="video" width="749" height="562" src="https://www.youtube.com/embed/8cjrs8FNawg" title="Pretty woman de Roy Orbinson por Daniel Hahn." frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div id="form-section" class="content-box">
+            <h2>Vendas</h2>
+            <p>Para adquirir algum de nossos cabos, deixe seu endereço de e-mail que entraremos em contato o mais breve possível</p>
+            <form id="form" action="https://www.freecodecamp.com/email-submit" method="post">
+                <input id="email" name="email" type="email" placeholder="Digite seu endereço de e-mail" required="" />
+                <input id="submit" name="submit" type="submit" value="Submit" />
+            </form>
+        </div>
+    </main>
+</body>
+</html>

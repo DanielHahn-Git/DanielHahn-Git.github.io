@@ -1,0 +1,3 @@
+https://www.freecodecamp.org/news/build-and-deploy-your-own-personal-portfolio-site/
+
+https://thiagobitencourt.github.io/freecodecamp-portfolio/

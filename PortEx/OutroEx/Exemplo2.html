@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Free Code Camp - Portfolio</title>
+    <link rel="shortcut icon" type="image/png" href="assets/images/freecodecamp-fav-icon.jpg" />
+</head>
+
+<body>
+    <header id="welcome-section">
+        <h1>Hello, I'm <strong>Thiago Bitencourt</strong></h1>
+        <p>
+            I'm a Frontend software developer and this page holds all of my projects made as part
+            of the <strong>Free Code Camp</strong> curriculum.
+        </p>
+        <div class="welcome-links">
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <nav id="navbar">
+            <ul>
+                <li>
+                    <a href="#welcome-section">Home</a>
+                </li>
+                <li>
+                    <a href="#projects">Projects</a>
+                </li>
+                <li>
+                    <a href="#contact">Contact</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main id="projects">
+        <h2 class="page-title">projects</h2>
+        <div class="projects-list">
+            <div class="project-tile">
+                <img src="assets/images/tribute-page.png" alt="Tribute page image" class="project-image">
+                <div>
+                    <p class="project-title">Bita world tribute page</p>
+                    <p class="project-description">Bita World is made of music, colours, learning and joy. Everything is
+                        done with a lot of care.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/thiagobitencourt/bita-world-tribute-page" target="_blank">Code</a>
+                        <a href="https://thiagobitencourt.github.io/bita-world-tribute-page" target="_blank">Live
+                            preview</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-tile">
+                <img src="assets/images/submition-form.png" alt="Awesome event submition form image"
+                    class="project-image">
+                <div>
+                    <p class="project-title">Awesome event submition form</p>
+                    <p class="project-description">This project implements a simple form that allows you submit your
+                        papper to this awesome event.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/thiagobitencourt/awesome-event-cfp-form" target="_blank">Code</a>
+                        <a href="https://thiagobitencourt.github.io/awesome-event-cfp-form/" target="_blank">Live
+                            preview</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-tile">
+                <img src="assets/images/yoga-mugs-landing-page.png" alt="" class="project-image">
+                <div>
+                    <p class="project-title">Yoga mugs product landing page</p>
+                    <p class="project-description">If you are a yoga practitioner or just like custom mugs, check out
+                        this great page.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/thiagobitencourt/yoga-mugs-landingpage" target="_blank">Code</a>
+                        <a href="https://thiagobitencourt.github.io/yoga-mugs-landingpage/" target="_blank">Live
+                            preview</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-tile">
+                <img src="assets/images/youtube-starter-guide.png" alt="" class="project-image">
+                <div>
+                    <p class="project-title">Youtube starter guide</p>
+                    <p class="project-description">If you want to create a successful youtube channel this documentation
+                        is the right place for you.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/thiagobitencourt/youtube-starter-guide" target="_blank">Code</a>
+                        <a href="https://thiagobitencourt.github.io/youtube-starter-guide/" target="_blank">Live
+                            preview</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-tile">
+                <img src="assets/images/portfolio.png" alt="Portfolio project image" class="project-image">
+                <div>
+                    <p class="project-title">Portfolio <i>(this page)</i></p>
+                    <p class="project-description">A page that shows off all of my projects made as part of the Free
+                        Code Camp curriculum.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/thiagobitencourt/freecodecamp-portfolio" target="_blank">Code</a>
+                        <a href="https://thiagobitencourt.github.io/freecodecamp-portfolio" target="_blank">Live
+                            preview</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer id="contact">
+        <h2 class="page-title">Contact</h2>
+        <ul class="contact-list">
+            <li>
+                <a href="https://www.linkedin.com/in/thiagobitencourt/" class="contact-link"
+                    target="_blank">linkedin.com/in/thiagobitencourt</a>
+            </li>
+            <li>
+                <a href="https://github.com/thiagobitencourt" class="contact-link"
+                    target="_blank">github.com/thiagobitencourt</a>
+            </li>
+            <li>
+                <a href="https://www.freecodecamp.org/thiagobitencourt" class="contact-link" id="profile-link"
+                    target="_blank">freecodecamp.org/thiagobitencourt</a>
+            </li>
+            <li>
+                <a href="https://twitter.com/thiagombiten" class="contact-link"
+                    target="_blank">twitter.com/thiagombiten</a>
+            </li>
+            <li>
+                <a href="https://thiagobitencourt.dev" class="contact-link" target="_blank">thiagobitencourt.dev</a>
+            </li>
+        </ul>
+    </footer>
+    <!-- <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script> -->
+    <script>
+        window.addEventListener('hashchange', function () {
+            const navBarItems = document.querySelectorAll('#navbar a');
+            for (let i = 0; i < navBarItems.length; i++) {
+                navBarItems[i].classList.remove('active');
+            }
+
+            const currentHash = window.location.hash;
+            const navItem = document.querySelector('#navbar a[href="' + currentHash + '"]');
+            navItem.classList.add('active');
+        });
+    </script>
+</body>
+
+</html>

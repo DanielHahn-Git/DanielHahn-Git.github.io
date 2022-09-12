@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>Código em C</title>
+</head>
+<body>
+  <nav id="navbar">
+    <header>Exemplo código em C</header>
+    <ul>
+      <li>
+        <a class="nav-link" href="#Introdução">Introdução</a>
+      </li>
+      <li>
+        <a class="nav-link" href="#Comentários">Comentários</a>
+      </li>
+      <li>
+        <a class="nav-link" href="#Bibliotecas">Bibliotecas</a>
+      </li>
+      <li>
+        <a class="nav-link" href="#Variáveis">Variáveis</a>
+      </li>
+      <li>
+        <a class="nav-link" href="#Protótipo_das_funções">Protótipo das funções</a>
+      </li>
+      <li>
+        <a class="nav-link" href="#Função_principal">Função principal</a>
+      </li>
+      <li>
+        <a class="nav-link" href="#Tratamento_das_funções">Tratamento das funções</a>
+      </li>
+    </ul>
+  </nav>
+  <main id="main-doc">
+    <section class="main-section" id="Introdução">
+      <header>Introdução</header>
+      <article>
+        <p>Este tem como objetivo exemplificar um código escrito em C.</p>
+        <p>O código em questão, abre o um link no Google Chrome na tela estendida em full-screen, e reinicia o aplicativo a cada 30 minutos.</p>
+      </article>
+    </section>
+    <section class="main-section" id="Comentários">
+      <header>Comentários</header>
+      <article>
+        <p>Comentários são partes importantes dentro do código. Na linguagem C, costuma-se começar o código com um comentário que descreve o programa, mostra a versão do aplicativo e também o autor.</p>
+      </article>
+    </section>
+    <section class="main-section" id="Bibliotecas">
+      <header>Bibliotecas</header>
+      <article>
+        <p>Bibliotecas são partes externas do código, as funções requerem bibliotecas especificas para serem executadas corretamente.</p>
+        <p>São adicionadas com o parâmetro "#include".</p>
+        <p>As bibliotecas adicionadas a este código são:</p>
+        <ul>
+          <li>
+            <code>#include &lt;stdio.h&gt;</code>
+          </li>
+          <li>
+            <code>#include &lt;stdlib.h&gt;</code>
+          </li>
+          <li>
+            <code>#include &lt;time.h&gt;</code>
+          </li>
+          <li>
+            <code>#include &lt;string.h&gt;</code>
+          </li>
+          <li>
+            <code>#include &lt;unistd.h&gt;</code>
+          </li>
+        </ul>
+      </article>
+    </section>
+    <section class="main-section" id="Variáveis">
+      <header>Variáveis</header>
+      <article>
+        <p>Variável é um local reservado na memoria para armazenar um tipo de dado.</p>
+        <p>As variáveis adicionadas a este código são:<br>
+          <code>
+            int hora=0;
+            int minuto=0;
+            int segundo=0;
+            int diadasemana=0;
+            int diadomes=0;
+            int mes=0;
+            int ano=0;
+            int resp=0;
+            unsigned int mSeconds=600000;
+            char command[80];
+          </code>
+        </p>
+      </article>
+    </section>
+    <section class="main-section" id="Protótipo_das_funções">
+      <header>Protótipo das funções</header>
+      <article>
+        <p>Os Protótipos de funções declaram as funções que serão usadas no programa.</p>
+      </article>
+    </section>
+    <section class="main-section" id="Função_principal">
+      <header>Função principal</header>
+      <article>
+        <p>A função "main" serve como ponto de partida para a execução do programa.</p>
+        <p>É dentro dela que as entradas dos programas são reconhecidas, processadas e uma saída é gerada. <br> Além disso, ela também é responsável por encerrar o programa informando se foi ou não uma execução bem-sucedida a partir do retorno de um código.</p>
+      </article>
+    </section>
+    <section class="main-section" id="Tratamento_das_funções">
+      <header>Tratamento das funções</header>
+      <article>
+        <p>Conjunto de comandos agrupados em um bloco, que recebe um nome e através deste pode ser evocado.</p>
+        <p>As funções servem para: <br></p>
+        <ul>
+          <li>Para permitir o reaproveitamento de código já construído(por você ou por outros programadores.</li>
+          <li>Para evitar que um trecho de código que seja repetido várias vezes dentro de um mesmo programa.</li>
+          <li>Para permitir a alteração de um trecho de código de uma forma mais rápida. Com o uso de uma função é preciso alterar apenas dentro da função que se deseja.</li>
+          <li>Para que os blocos do programa não fiquem grandes demais e, por consequência, mais difíceis de entender.</li>
+          <li>Para facilitar a leitura do programa-fonte de uma forma mais fácil.</li>
+          <li>Para separar o programa em partes(blocos) que possam ser logicamente compreendidos de forma isolada.</li>
+        </ul>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
