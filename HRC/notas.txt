@@ -11,3 +11,16 @@ http://qeasy.com.br/display_hrc_gramado/assets/plugins/sticky-kit-master/dist/st
 http://qeasy.com.br/display_hrc_gramado/assets/plugins/styleswitcher/jQuery.style.switcher.js
 
 http://qeasy.com.br/display_hrc_gramado/minisidebar/hibrida.php
+
+http://qeasy.com.br/display_hrc_gramado/minisidebar/js/custom.min.js
+
+http://qeasy.com.br/display_hrc_gramado/minisidebar/js/jquery.slimscroll.js
+
+http://qeasy.com.br/display_hrc_gramado/minisidebar/js/sidebarmenu.js
+
+http://qeasy.com.br/display_hrc_gramado/minisidebar/js/waves.js
+
+<iframe width="1490" height="792" src="https://www.youtube.com/embed/sYrwW5NNi9c" title="HRC Gramado" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+https://youtu.be/sYrwW5NNi9c
+
