@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redux basic example</title>
+    <script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
+    <script src="https://unpkg.com/react/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/prop-types/prop-types.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+</head>
+
+<body>
+    <div id="root">
+        <!-- O conteúdo deste elemento será substituído pelo componente. -->
+    </div>
+    <!-- <script type="text/babel" src="index.jsx"></script> -->
+    <script>
+        const ADD_TO_DO = 'ADD_TO_DO';
+
+        // Uma lista de frases que representam as tarefas a fazer:
+        const todos = [
+            'Go to the store',
+            'Clean the house',
+            'Cook dinner',
+            'Learn to code',
+        ];
+
+        const immutableReducer = (state = todos, action) => {
+            switch (action.type) {
+                case ADD_TO_DO:
+                    // Não mude o estado aqui ou os testes vão falhar
+                    let newArray = [...state, action.todo];
+                    return newArray;
+                default:
+                    return state;
+            }
+        };
+
+        const addToDo = (todo) => {
+            return {
+                type: ADD_TO_DO,
+                todo
+            }
+        };
+
+        const store = Redux.createStore(immutableReducer);
+        console.log(store.getState());
+        store.dispatch(addToDo('teste'));
+        console.log(store.getState());
+    </script>
+</body>
+
+</html>
