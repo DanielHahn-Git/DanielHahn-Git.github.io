@@ -1,3 +1,0 @@
-<!-- [{"status":"1","iframe":" <iframe src=\"https:\/\/www.youtube.com\/embed\/HepMtapWyvI?controls=0&showinfo=0&rel=0&autoplay=1&mute=1&sound=0&modestbranding=1&loop=1&playlist=HepMtapWyvI\" frameborder=\"0\" allowfullscreen><\/iframe>"}] -->
-
-[{"status":"1","iframe":" <iframe src=\"https:\/\/www.youtube.com\/embed\/sYrwW5NNi9c?controls=0&showinfo=0&rel=0&autoplay=1&mute=1&sound=0&modestbranding=1&loop=1&playlist=sYrwW5NNi9c\" frameborder=\"0\" allowfullscreen><\/iframe>"}]
