@@ -1,0 +1,72 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#quote-box {
+    max-width: 500px;
+}
+
+#author {
+    padding-right: 70px;
+}
+
+#text {
+    padding-left: 70px;
+    padding-right: 70px;
+}
+
+.App {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+}
+
+.btns {
+  background-color: #282c34;
+}
+
+
+@keyframes colors-wee {
+  0% {
+    background-color: #ff944d;
+  }
+  10% {
+    background-color: #ff3333;
+  }
+  20% {
+    background-color: #ff3399;
+  }
+  30% {
+    background-color: #a64dff;
+  }
+  40% {
+    background-color: #6666ff;
+  }
+  50% {
+    background-color: #33d6ff;
+  }
+  60% {
+    background-color: #4dff88;
+  }
+  70% {
+    background-color: #d2ff4d;
+  }
+  80% {
+    background-color: #ffcc00;
+  }
+  90% {
+    background-color: #adad85;
+  }
+  100% {
+    background-color: #a6a6a6;
+  }
+}
