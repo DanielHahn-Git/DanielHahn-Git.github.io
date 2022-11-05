@@ -13,3 +13,4 @@ class Calculator {
         this.clear()
     }
 }
+
