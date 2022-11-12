@@ -101,13 +101,10 @@ class Calculator extends React.Component {
       question: (this.state.question += value),
       answer: (this.state.answer += value),
     });
-    console.log(value);
+    console.log(`${this.state.question} handleClick`);
   }
   
   render() {
-    const DisplayIn = {
-      color: "red" 
-    };
     return (
       <div className="frame">
         <CalculatorTitle value='Calculator' />
@@ -141,5 +138,10 @@ class Calculator extends React.Component {
   }
 }
 
-ReactDOM.render(<Calculator />, document.getElementById("root"));
+const element = <Calculator />;
+const root = ReactDOM.createRoot(
+  document.getElementById('root')
+);
+
+root.render(element);
 
