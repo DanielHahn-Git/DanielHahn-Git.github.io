@@ -1,0 +1,215 @@
+@import "~antd/dist/antd.css";
+
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma;
+    font-weight: normal;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+}
+
+
+.frame {
+    border: 10px solid white;
+    height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+    padding: 10%;
+    padding-bottom: 5%;
+    min-height: 700px;
+}
+
+
+.calculator-title {
+    box-sizing: border-box;
+    width: 50%;
+    height: 12%;
+    padding: 0;
+    margin: 0 auto;
+    margin-top: -8%;
+    margin-bottom: 2%;
+    max-width: 430px;
+    min-width: 340px;
+}
+
+.title {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    font-weight: bold;
+    font-family: Electrolize;
+    font-size: 2em;
+}
+
+
+.screen {
+    border: none;
+    height: 30%;
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 1);
+}
+
+
+.screen-row {
+    border: none;
+    height: 25%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+    top: 45%;
+
+}
+
+.screen>div:first-of-type {
+    border: none;
+    height: 30%;
+    top: 47%;
+    z-index: 2;
+}
+
+
+.output {
+    background-color: rgba(0, 0, 0, 1);
+    text-align: end;
+    border: none;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    font-family: Electrolize;
+    font-size: 2.5em;
+    padding-top: 15px;
+    padding-right: 14px;
+    color: rgb(80, 100, 110);
+}
+
+
+
+
+.screen>div:first-of-type>.output {
+    font-size: 3em;
+    padding-top: 20px;
+    color: white; 
+}
+
+.mainCalc {
+    width: 50%;
+    margin: 0 auto;
+    height: 100%;
+    box-sizing: border-box;
+    max-width: 340px;
+    max-height: 530px;
+    min-width: 340px;
+    min-height: 530px;
+}
+
+
+.button-grid {
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    grid-template-columns: repeat(4, 25%);
+    grid-template-rows: repeat(5, 20%);
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 70%;
+    box-sizing: border-box;
+}
+
+.btnW {
+    color: white;
+    font-size: 1.8em;
+}
+
+.btnO {
+    color: orange;
+}
+
+.button-op:not(:nth-of-type(2)) {
+    font-size: 2.8em;
+    font-weight: lighter;
+
+}
+
+.button-op:nth-of-type(2) {
+    font-size: 1.6em;
+
+}
+
+
+.btn {
+    background-color: black;
+}
+
+.button-on-off {
+    color: red;
+}
+
+.btnF {
+    font-family: Electrolize;
+}
+
+.button-ac {
+    font-size: 1.4em;
+}
+
+
+
+
+/*  .frame {
+    border: 5px solid black;
+    padding: 30px;
+    margin: 3px;
+} */
+/* 
+.mainCalc {
+    border: 5px solid red;
+    padding: 30px;
+    margin: 30px;
+}
+
+.teste {
+    color: blue;
+    border: 20px solid black;
+    padding: 30px;
+    margin: 30px;
+}
+ 
+.button-grid {
+      display: grid;
+  justify-content: center;
+  align-content: center;
+  min-height: 80vh;
+  grid-template-columns: repeat(4, 120px);
+  grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+  padding: 20px;
+  padding: 20px;
+  border: 2px solid black;
+}
+
+
+ */
+/* .but {
+    border: 5px solid black;
+} */
+/* .test {
+    height: 20px;
+}
+
+.double {
+    height: 40px;
+}
+ */
