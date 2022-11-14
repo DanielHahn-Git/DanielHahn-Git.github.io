@@ -12,50 +12,38 @@ const CalculatorTitle = (props) => (
     </div>
 );
 
-class Screen extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            size: '3'
-        }
-        this.handleChange = this.handleChange.bind(this);
-    }
-    handleChange() {
-        this.setState(prevState => {
-            return {
-                size: this.state.size - 1
-            }
-        });
-    }
-    render() {
-        return (
-            <div className="screen">
-                <div className="screen-row question-div">
-                    <style>{`
-                        .question-out {
-                            color: white;
-                            font-size: ${this.state.size}em;
-                        }
-                    `}</style>
-                    <input className="output question-out" title="question" type="text" readOnly value={this.props.value.question} />
-                </div>
-                <div className="screen-row answer-div">
-                    <input className="output answer-out" title="answer" type="text" readOnly value={this.props.value.answer} />
-                </div>
-            </div>
-        );
-    } 
+
+const ScreenQuestion = (props) => {
+    console.log(`${props.value.size} ScreenQuestion`);
+    return (
+        <div className='screen-question'>
+            <style>{` 
+        .output-question { 
+          font-size: ${props.value.size}%; 
+        } 
+      `}</style>
+            <input className="output output-question" title="display" type="text" label="question" readOnly value={props.value.question} />
+        </div>
+    );
 }
-
-
-const ButtonNum = (props) => (
-    <input
-        title="buttonNum"
-        className="button-num btnW btn btnF"
-        onClick={props.handleClick}
-        type="button"
-        value={props.label} />
+  
+const ScreenAnswer = (props) => (
+  <div className='screen-answer'>
+     <input className="output output-answer" title="display" type="text" label='answer' readOnly value={props.value.answer} />
+  </div>
 );
+
+
+const ButtonNum = (props) => {
+    return (
+        <input
+            title="buttonNum"
+            className="button-num btnW btn btnF"
+            onClick={props.handleClick}
+            type="button"
+            value={props.label} />
+    );
+};
 
 const ButtonOp = (props) => (
     <input
@@ -112,25 +100,40 @@ class Calculator extends React.Component {
         this.state = {
             question: "",
             answer: "",
+            size: "270"
         };
         this.handleClick = this.handleClick.bind(this);
+        /* ScreenQuestion defaultProps = {
+            size: 2.5
+        } */
     }
 
+
     handleClick(event) {
+        console.log('handleClick');
         const value = event.target.value;
         this.setState({
             question: (this.state.question += value),
             answer: (this.state.answer += value),
         });
         console.log(`${this.state.question} handleClick`);
+        console.log(`${this.state.size} size`);
+        this.state.question.length > 9 ?
+            this.setState({
+                size: (this.state.size - 12)
+            }) : console.log(`${this.state.size} size`);
     }
-
+        
     render() {
+        console.log(`${this.state.size} render`);
         return (
             <div className="frame">
                 <CalculatorTitle value='Calculator' />
                 <div className="mainCalc">
-                    <Screen value={this.state} />
+                  <div className='screen'>
+                    <ScreenQuestion value={this.state} />
+                    <ScreenAnswer value={this.state} />
+                  </div>
                     <div className="button-grid">
                         <ButtonAC handleClick={this.handleClick} id="button" label={"AC"} />
                         <ButtonBS handleClick={this.handleClick} id="button" label={"DEL"} value={<IconBS />} />
@@ -158,6 +161,8 @@ class Calculator extends React.Component {
         );
     }
 }
+
+
 
 const element = <Calculator />;
 const root = ReactDOM.createRoot(
