@@ -481,16 +481,18 @@ function Calculator() {
             </span>
           </p>
         </div>
-      ) : display ? (
-        <button
-          type="button"
-          className="material-icons-outlined iconOnOff button-on-off btnG btnW"
-          onClick={getClick}
-          title="btn"
-          value={"PWR"}
-        >
-          &#xe8ac;
-        </button>
+      ) : (display) ? (
+        <div className="display-off">
+          <button
+            type="button"
+            className="material-icons-outlined iconOnOff button-on-off btnG btnY"
+            onClick={getClick}
+            title="btn"
+            value={"PWR"}
+          >
+            &#xe8ac;
+          </button>
+        </div>
       ) : (
         <div className="main-calc">
           <div className="screen">
