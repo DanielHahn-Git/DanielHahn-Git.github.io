@@ -98,47 +98,21 @@ function Calculator() {
         idRoot.style.setProperty('--minHeightRoot', '60vh');
         idRoot.style.setProperty('--maxHeightRoot', '90vh');
     },
-    setFontSize(key) {
+    setFontSize() {
       bodyClientWidth = idBody.clientWidth;
-      let titleFontSize = 110;
       let questFontSize = 120;
       let parseFontSize = 120;
-      let ansFontSize = 90;
-      let colorQuest = "white";
-      let colorParse = "white";
-      let colorAns = "gray";
-      console.log(key + ' keyy');
-      if (key === "EQ") {
-        ansFontSize = 140;
-        colorQuest = "black";
-        colorParse = "gray";
-        colorAns = "white";
-      }
-      idBody.style.setProperty('--colorQuest', colorQuest);
-      idBody.style.setProperty('--colorParse', colorParse);
-      idBody.style.setProperty('--colorAns', colorAns);
-      idBody.style.setProperty('--titleFontSize', titleFontSize + "%");
+      let ansFontSize = 120;
       idBody.style.setProperty('--questFontSize', questFontSize + "%");
       idBody.style.setProperty('--parseFontSize', parseFontSize + "%");
       idBody.style.setProperty('--ansFontSize', ansFontSize + "%");
-      let titleWidth = titleRef.current.offsetWidth + 10;
       let questWidth = questRef.current.offsetWidth + 20;
       let parseWidth = parsedRef.current.offsetWidth + 20;
       let ansWidth = answerRef.current.offsetWidth + 20;
-      let titleCalc = bodyClientWidth - titleWidth;
       let questCalc = bodyClientWidth - questWidth;
       let parseCalc = bodyClientWidth - parseWidth;
       let ansCalc = bodyClientWidth - ansWidth;
       try {
-        while (titleCalc < 5) {
-          bodyClientWidth = idBody.clientWidth;
-          titleWidth = titleRef.current.offsetWidth + 10;
-          titleCalc = bodyClientWidth - titleWidth;
-          if (titleCalc < 5) {
-            titleFontSize = titleFontSize -5;
-            idBody.style.setProperty('--titleFontSize', titleFontSize + "%");
-          }
-        }
         while (questCalc < 10) {
           bodyClientWidth = idBody.clientWidth;
           questWidth = questRef.current.offsetWidth + 20;
@@ -190,7 +164,7 @@ function Calculator() {
 
   useEffect(() => {
     setFontSize();
-  }, [quest,title]);
+  }, [quest]);
 
 
   const reg = {
@@ -355,11 +329,6 @@ function Calculator() {
     onOff() {
       setDisplay(!display);
     },
-    equal(key) {
-      console.log('voltou');
-      setFontSize(key);
-      console.log("equal");
-    }
   };
   const clear = fns.clear;
   const same = fns.same;
@@ -368,14 +337,13 @@ function Calculator() {
   const sliceStr = fns.sliceStr;
   const chgZeros = fns.chgZeros;
   const onOff = fns.onOff;
-  const equal = fns.equal;
 
   //------------------------------------------------------------------------------------------------------
 
   const prsd = {
     numKey(key) {
       try {
-        if (exp === "0" && key === "0") throw "Try another number.";
+        if (exp === "0" && key === "0") throw "try another number";
         if (str === "0") return same(key);
         if (exp === "0" && key !== "0") return sliceStr(), add(key);
         if (regCent(str)) return add("*" + key);
@@ -392,7 +360,7 @@ function Calculator() {
       try {
         if (regCent(str)) return add("*0.");
         if (exp === "") return add("0.");
-        if (regDot(exp)) throw "Number it's already decimal.";
+        if (regDot(exp)) throw "it's already decimal";
         if (regEndNum(exp)) return add(key);
       } catch (error) {
         console.log(error.toString());
@@ -437,7 +405,7 @@ function Calculator() {
         if (regCentOp(str)) return numOp(key);
         if (regMinus(str)) return opMinus();
         if (regCent(str)) return add(key);
-        if (regNoZero(exp) == false) throw "Try a valid number.";
+        if (regNoZero(exp) == false) throw "try a valid number";
         if (regDotZeros(exp)) return chgZeros(key);
         add(key);
       } catch (error) {
@@ -453,8 +421,8 @@ function Calculator() {
     },
     centKey(key) {
       try {
-        if (regOpCent(str)) throw "Invalid expression.";
-        if (regNoZero(exp) == false) throw "Try a valid number.";
+        if (regOpCent(str)) throw "invalid expression";
+        if (regNoZero(exp) == false) throw "try a valid number";
         if (regDotZeros(exp)) return chgZeros(key);
         add(key);
       } catch (error) {
@@ -465,42 +433,33 @@ function Calculator() {
         }, 2000);
       }
     },
-    eqKey(key) {
-      try {
-        if (regEndOp(str)) throw "Expression must end with a number.";
-        if (regNoZero(exp) == false) throw "Try a valid number.";
-        equal(key);
-        console.log('eqKey');
-      } catch (error) {
-        console.log(error.toString());
-        setTitle(error);
-        setTimeout(() => {
-          setTitle("Calculator");
-        }, 2000);
-      }
-    }
   };
   const numKey = prsd.numKey;
   const dotKey = prsd.dotKey;
   const opKey = prsd.opKey;
   const bsKey = prsd.bsKey;
   const centKey = prsd.centKey;
-  const eqKey = prsd.eqKey;
 
   //------------------------------------------------------------------------------------------------------
 
   const getClick = (e) => {
     let key = e.target.value;
     console.log(`${key} key`);
-    regEndNum(key) ? numKey(key) :
-    regEndOp(key) ? opKey(key) :
-    key === "." ? dotKey(key) :
-    key === "C" ? clear() :
-    key === "BS" ? bsKey() :
-    key === "%" ? centKey(key) :
-    key === "PWR" ? onOff() :
-    key === "EQ" ? eqKey(key) :
-    console.log("getClick");
+    regEndNum(key)
+      ? numKey(key)
+      : regEndOp(key)
+      ? opKey(key)
+      : key === "."
+      ? dotKey(key)
+      : key === "C"
+      ? clear()
+      : key === "BS"
+      ? bsKey()
+      : key === "%"
+      ? centKey(key)
+      : key === "PWR"
+      ? onOff()
+      : console.log("getClick");
   };
 
   //------------------------------------------------------------------------------------------------------
@@ -537,26 +496,37 @@ function Calculator() {
       ) : (
         <div className="main-calc">
           <div className="screen">
-              <p className="output-title">
+            <div className="screen-title">
+              <p className="output output-title">
                 <span className="btnF span-title" ref={titleRef}>
                   {title}
                 </span>
               </p>
-              <p className="output-question">
+              {/* <input className="output output-title" value={title} title="display" type="text" readOnly/> */}
+            </div>
+            <div className="screen-question">
+              <p className="output output-question">
                 <span className="btnF span-quest" id="spanQuest" ref={questRef}>
                   {quest}
                 </span>
               </p>
-              <p className="output-parsed">
+              {/* <input className="output output-question" value={quest} title="display" type="text" readOnly/> */}
+            </div>
+            <div className="screen-parsed">
+              <p className="output output-parsed">
                 <span className="btnF span-pars" ref={parsedRef}>
                   {parsed}
                 </span>
               </p>
-              <p className="output-answer">
+            </div>
+            <div className="screen-answer">
+              <p className="output output-answer">
                 <span className="btnF span-ans" ref={answerRef}>
                   {answer}
                 </span>
               </p>
+              {/* <input className="output output-answer" value={answer} title="display" type="text" readOnly/> */}
+            </div>
           </div>
           <div className="button-grid">
             <button
@@ -735,7 +705,7 @@ function Calculator() {
               onClick={getClick}
               title="btn"
               className="button-op btnO btnG btnF"
-              value={"EQ"}
+              value={"="}
             >
               =
             </button>
