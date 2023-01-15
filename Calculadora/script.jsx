@@ -20,7 +20,8 @@ const idBody = document.getElementById("body");
 
 var str = "0";
 var exp = "0";
-var first = 120;
+var count = 0;
+var lastKey = "none";
 
 var docClientWidth = document.documentElement.clientWidth;
 var docClientHeight = document.documentElement.clientHeight;
@@ -72,8 +73,8 @@ function Calculator() {
         idRoot.style.setProperty('--maxWidthRoot', '465px');
         idRoot.style.setProperty('--minHeightRoot', '362px');
         idRoot.style.setProperty('--maxHeightRoot', '895px');
-    },
-    smallWidth() {
+      },
+      smallWidth() {
         let width = (docClientWidth / 100) * 90;
         let height = width / 0.52;
         idRoot.style.setProperty('--widthRoot', width + 'px');
@@ -85,6 +86,7 @@ function Calculator() {
         bodyClientWidth = idBody.clientWidth;
         bodyClientHeight = idBody.clientHeight;
         fontSize = (bodyClientWidth / 100) * 10;
+        console.log(fontSize + 'fontSize small');
         idBody.style.setProperty('--fontSize', fontSize + 'px');
     },
     littleHeight() {
@@ -98,7 +100,7 @@ function Calculator() {
         idRoot.style.setProperty('--minHeightRoot', '60vh');
         idRoot.style.setProperty('--maxHeightRoot', '90vh');
     },
-    setFontSize(key) {
+    setFontSize() {
       bodyClientWidth = idBody.clientWidth;
       let titleFontSize = 110;
       let questFontSize = 120;
@@ -107,8 +109,7 @@ function Calculator() {
       let colorQuest = "white";
       let colorParse = "white";
       let colorAns = "gray";
-      console.log(key + ' keyy');
-      if (key === "EQ") {
+      if (exp === "=") {
         ansFontSize = 140;
         colorQuest = "black";
         colorParse = "gray";
@@ -121,10 +122,10 @@ function Calculator() {
       idBody.style.setProperty('--questFontSize', questFontSize + "%");
       idBody.style.setProperty('--parseFontSize', parseFontSize + "%");
       idBody.style.setProperty('--ansFontSize', ansFontSize + "%");
-      let titleWidth = titleRef.current.offsetWidth + 10;
-      let questWidth = questRef.current.offsetWidth + 20;
-      let parseWidth = parsedRef.current.offsetWidth + 20;
-      let ansWidth = answerRef.current.offsetWidth + 20;
+      let titleWidth = titleRef.current.offsetWidth;
+      let questWidth = questRef.current.offsetWidth + 10;
+      let parseWidth = parsedRef.current.offsetWidth + 10;
+      let ansWidth = answerRef.current.offsetWidth + 10;
       let titleCalc = bodyClientWidth - titleWidth;
       let questCalc = bodyClientWidth - questWidth;
       let parseCalc = bodyClientWidth - parseWidth;
@@ -132,16 +133,19 @@ function Calculator() {
       try {
         while (titleCalc < 5) {
           bodyClientWidth = idBody.clientWidth;
-          titleWidth = titleRef.current.offsetWidth + 10;
+          titleWidth = titleRef.current.offsetWidth;
           titleCalc = bodyClientWidth - titleWidth;
           if (titleCalc < 5) {
             titleFontSize = titleFontSize -5;
             idBody.style.setProperty('--titleFontSize', titleFontSize + "%");
           }
+          if (titleFontSize < 80) {
+            break;
+          }
         }
         while (questCalc < 10) {
           bodyClientWidth = idBody.clientWidth;
-          questWidth = questRef.current.offsetWidth + 20;
+          questWidth = questRef.current.offsetWidth + 10;
           questCalc = bodyClientWidth - questWidth;
           if (questCalc < 10) {
             questFontSize = questFontSize -5;
@@ -150,7 +154,7 @@ function Calculator() {
         }
         while (parseCalc < 10) {
           bodyClientWidth = idBody.clientWidth;
-          parseWidth = parsedRef.current.offsetWidth + 20;
+          parseWidth = parsedRef.current.offsetWidth + 10;
           parseCalc = bodyClientWidth - parseWidth;
           if (parseCalc < 10) {
             parseFontSize = parseFontSize -5;
@@ -159,7 +163,7 @@ function Calculator() {
         }
         while (ansCalc < 10) {
           bodyClientWidth = idBody.clientWidth;
-          ansWidth = answerRef.current.offsetWidth + 20;
+          ansWidth = answerRef.current.offsetWidth + 10;
           ansCalc = bodyClientWidth - ansWidth;
           if (ansCalc < 10) {
             ansFontSize = ansFontSize -5;
@@ -244,17 +248,17 @@ function Calculator() {
 
   const check = {
     upExp() {
+      if (str.length > 19) {
+        setTitle("Press the equals key please.");
+        setTimeout(() => {
+          setTitle("Calculator");
+        }, 2000);
+      } else {
       let index = [];
       for (let i = 0; i < str.length; i++) {
         if (regOpCent(str[i])) index.unshift(i);
       }
       exp = str.slice(index[0] + 1);
-      console.log(`${index}  index`);
-      console.log(`${exp} exp`);
-      var moneyFormatter  = new Intl.NumberFormat();
-      let forma = moneyFormatter.format(str);
-      console.log(`${forma} forma`);
-      /* console.log(exp.toLocaleString('de-DE')); */
       setQuest(
         str
           .replaceAll(" ", "")
@@ -269,10 +273,10 @@ function Calculator() {
         parsedToStr();
         eva();
       }
+    }
     },
     parsedToStr() {
       let toStr = null;
-      let strExp = null;
       if (str === "0") {
         return setAnswer("");
       } else {
@@ -332,6 +336,7 @@ function Calculator() {
       upExp();
     },
     add(value) {
+      console.log(value + "  add");
       str = str + value;
       upExp();
     },
@@ -339,10 +344,6 @@ function Calculator() {
       str = str + "*" + value;
       upExp();
     },
-    /* dot() {
-      str = str + "0.";
-      upExp();
-    }, */
     sliceStr() {
       str = str.slice(0, -1);
       upExp();
@@ -355,16 +356,17 @@ function Calculator() {
     onOff() {
       setDisplay(!display);
     },
-    equal(key) {
-      console.log('voltou');
-      setFontSize(key);
-      console.log("equal");
+    equal() {
+      str = answer.replace(",", ".");
+      console.log(str + " equal");
+      exp = "=";
+      console.log(exp + " equal");
+      setFontSize();
     }
   };
   const clear = fns.clear;
   const same = fns.same;
   const add = fns.add;
-  /* const dot = fns.dot; */
   const sliceStr = fns.sliceStr;
   const chgZeros = fns.chgZeros;
   const onOff = fns.onOff;
@@ -375,6 +377,9 @@ function Calculator() {
   const prsd = {
     numKey(key) {
       try {
+        if (exp.length > 14) throw "WTF... Why such a large number?";
+        if (count > 12) throw "WTF...";
+        if (exp === "=") return clear(), same(key);
         if (exp === "0" && key === "0") throw "Try another number.";
         if (str === "0") return same(key);
         if (exp === "0" && key !== "0") return sliceStr(), add(key);
@@ -390,6 +395,8 @@ function Calculator() {
     },
     dotKey(key) {
       try {
+        if (count > 2) throw "WTF...";
+        if (exp === "=") return clear(), add(".");
         if (regCent(str)) return add("*0.");
         if (exp === "") return add("0.");
         if (regDot(exp)) throw "Number it's already decimal.";
@@ -403,23 +410,26 @@ function Calculator() {
       }
     },
     opKey(key) {
+      if (exp === "=") {
+        exp = str;
+      }
       const opr = {
         strZero(key) {
-          console.log("srtZero");
+        //  console.log("srtZero");
           key === "-" && same(key);
         },
         strMinus() {
-          console.log("strMinus");
+        //  console.log("strMinus");
           key === "-" && clear();
           key === "+" && clear();
         },
         numOp(key) {
-          console.log("numOp");
+        //  console.log("numOp");
           key !== "-" && sliceStr();
           add(key);
         },
         opMinus() {
-          console.log("opMinus");
+        //  console.log("opMinus");
           sliceStr();
           sliceStr();
           add(key);
@@ -431,6 +441,7 @@ function Calculator() {
       const opMinus = opr.opMinus;
 
       try {
+        if (count > 2) throw "WTF...";
         if (str === "-") return strMinus();
         if (str === "0" && key === "-") return strZero(key);
         if (regNumOp(str)) return numOp(key);
@@ -449,12 +460,14 @@ function Calculator() {
       }
     },
     bsKey() {
+      if (exp === "=") return clear();
       str.length == 1 ? clear() : sliceStr();
     },
     centKey(key) {
       try {
+        if (count > 2) throw "WTF...";
         if (regOpCent(str)) throw "Invalid expression.";
-        if (regNoZero(exp) == false) throw "Try a valid number.";
+        if (regNoZero(exp) == false) throw "Do you really want to know the percentage of zero?";  //"Try a valid number."   "Do you really want to know the percentage of zero?"
         if (regDotZeros(exp)) return chgZeros(key);
         add(key);
       } catch (error) {
@@ -462,21 +475,38 @@ function Calculator() {
         setTitle(error);
         setTimeout(() => {
           setTitle("Calculator");
-        }, 2000);
+        }, 2500);
       }
     },
-    eqKey(key) {
+    eqKey() {
+      let index = [];
+      let op = "";
+      for (let i = 0; i < str.length; i++) {
+        if (regOpCent(str[i])) index.unshift(i);
+      }
+      console.log(index);
+      op = str[index[0]];
+      console.log(op + '  op');
+      let message = "Do you really want to " + op + " zero?";
+      message = message
+                .replace("-", "subtract")
+                .replace("+", "add")
+                .replace("/", "divide by")
+                .replace("*", "multiply by");
       try {
+        if (count > 2) throw "WTF...";
+        if (exp === "=") return equal();
         if (regEndOp(str)) throw "Expression must end with a number.";
-        if (regNoZero(exp) == false) throw "Try a valid number.";
-        equal(key);
+        if (str === "0") throw "WTF...";
+        if (regNoZero(exp) == false) throw message;
         console.log('eqKey');
+        equal();
       } catch (error) {
         console.log(error.toString());
         setTitle(error);
         setTimeout(() => {
           setTitle("Calculator");
-        }, 2000);
+        }, 3000);
       }
     }
   };
@@ -490,8 +520,12 @@ function Calculator() {
   //------------------------------------------------------------------------------------------------------
 
   const getClick = (e) => {
+    console.log(`${lastKey} lastKey`);
     let key = e.target.value;
     console.log(`${key} key`);
+    lastKey == key ? count++ : count = 0;
+    console.log(`${count} count`);
+    lastKey = key;
     regEndNum(key) ? numKey(key) :
     regEndOp(key) ? opKey(key) :
     key === "." ? dotKey(key) :
@@ -499,19 +533,20 @@ function Calculator() {
     key === "BS" ? bsKey() :
     key === "%" ? centKey(key) :
     key === "PWR" ? onOff() :
-    key === "EQ" ? eqKey(key) :
+    key === "EQ" ? eqKey() :
     console.log("getClick");
   };
 
   //------------------------------------------------------------------------------------------------------
 
-  console.log(`width: ${idRoot.offsetWidth},  height: ${idRoot.offsetHeight}`);
-    console.log(`${display} display is ` + typeof display);
-    console.log(`${land} land is ` + typeof land);
+  //  console.log(`width: ${idRoot.offsetWidth},  height: ${idRoot.offsetHeight}`);
+  //  console.log(`${display} display is ` + typeof display);
+  //  console.log(`${land} land is ` + typeof land);
     console.log(`${exp} exp is ` + typeof exp);
     console.log(`${str} str is ` + typeof str);
     console.log(`${quest} quest is ` + typeof quest);
     console.log(`${answer} answer is ` + typeof answer);
+  //  console.log('render');
   return (
     <div className="frame" id="frame">
       {land ? (

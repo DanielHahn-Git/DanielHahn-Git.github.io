@@ -2,7 +2,8 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  font-family: Verdana, Geneva, Tahoma;
+  /*font-family: Verdana, Geneva, Tahoma;*/
+  font-family: Electrolize;
   font-weight: normal;
   /* font-size: 5vh; */
 }
@@ -84,7 +85,7 @@ body {
   box-sizing: border-box;
   position: relative;
   max-width: 90%;
-  font-family: Electrolize;
+  /*font-family: Electrolize;*/
   text-align: center;
   margin: 0;
   padding: 0;
@@ -133,16 +134,16 @@ body {
 
 .span-title {
   border: none;
-  display: inline-block;
+  display: inline-flex;
   position: relative;
   top: 10%;
   font-size: var(--titleFontSize);
   font-weight: normal;
   font-style: normal;
-  line-height: 1;
+  line-height: 120%;
   letter-spacing: normal;
   text-transform: none;
-  white-space: nowrap;
+  white-space: normal;
   overflow: hidden;
   text-overflow: ellipsis;
   color: white;
@@ -289,7 +290,7 @@ body {
 }
 
 .iconBS {
-  font-weight: normal;
+  font-weight: lighter;
   font-style: normal;
   font-size: 100%;
   line-height: 1;
@@ -301,7 +302,8 @@ body {
 }
 
 .button-cent {
-  font-size: 100%;
+  font-size: 90%;
+  font-weight: 600;
 }
 
 .button-x {
@@ -316,9 +318,9 @@ body {
   background-color: black;
 }
 
-.btnF {
+/*.btnF {
   font-family: Electrolize;
-}
+}*/
 
 .button-ac {
   font-size: 107%;
@@ -371,7 +373,7 @@ body {
 }
 
 /* latin-ext */
-@font-face {
+/*@font-face {
   font-family: "Titillium Web";
   font-style: normal;
   font-weight: 400;
@@ -379,10 +381,10 @@ body {
     format("woff2");
   unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB,
     U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
+}*/
 
 /* latin */
-@font-face {
+/*@font-face {
   font-family: "Titillium Web";
   font-style: normal;
   font-weight: 400;
@@ -391,7 +393,7 @@ body {
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
     U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
     U+FEFF, U+FFFD;
-}
+}*/
 
 .material-icons-outlined {
   font-family: "Material Icons Outlined";
