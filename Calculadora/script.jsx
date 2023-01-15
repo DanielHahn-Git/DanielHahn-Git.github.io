@@ -109,12 +109,12 @@ function Calculator() {
       let colorQuest = "white";
       let colorParse = "white";
       let colorAns = "gray";
-      if (exp === "=") {
+      /* if (exp === "=") {
         ansFontSize = 140;
         colorQuest = "black";
         colorParse = "gray";
         colorAns = "white";
-      }
+      } */
       idBody.style.setProperty('--colorQuest', colorQuest);
       idBody.style.setProperty('--colorParse', colorParse);
       idBody.style.setProperty('--colorAns', colorAns);
@@ -263,7 +263,7 @@ function Calculator() {
         str
           .replaceAll(" ", "")
           .replaceAll("/", "÷")
-          .replaceAll(".", ",")
+          //.replaceAll(".", ",")
           .replaceAll("*", "x")
       );
       if (regEndOp(str)) {
@@ -361,7 +361,8 @@ function Calculator() {
       console.log(str + " equal");
       exp = "=";
       console.log(exp + " equal");
-      setFontSize();
+      setQuest(str);
+     // setFontSize();
     }
   };
   const clear = fns.clear;
@@ -578,202 +579,42 @@ function Calculator() {
                 </span>
               </p>
               <p className="output-question">
-                <span className="btnF span-quest" id="spanQuest" ref={questRef}>
+                <span className="btnF span-quest" id="display" ref={questRef}>
                   {quest}
                 </span>
               </p>
               <p className="output-parsed">
                 <span className="btnF span-pars" ref={parsedRef}>
-                  {parsed}
+                  {quest}
                 </span>
               </p>
               <p className="output-answer">
                 <span className="btnF span-ans" ref={answerRef}>
-                  {answer}
+                  {quest}
                 </span>
               </p>
           </div>
           <div className="button-grid">
-            <button
-              type="button"
-              onClick={getClick}
-              title="btn"
-              className="button-ac btnO btnG btnF"
-              value={"C"}
-            >
-              C
-            </button>
-            <button
-              type="button"
-              onClick={getClick}
-              title="btn"
-              className="material-icons-outlined iconBS button-bs btnO btnG"
-              value={"BS"}
-            >
-              &#xe14a;
-            </button>
-            <button
-              type="button"
-              onClick={getClick}
-              title="btn"
-              className="button-cent btnO btnG btnF"
-              value={"%"}
-            >
-              %
-            </button>
-            <button
-              type="button"
-              onClick={getClick}
-              title="btn"
-              className="button-op btnO btnG btnF"
-              value={"/"}
-            >
-              ÷
-            </button>
-            <button
-              type="button"
-              onClick={getClick}
-              title="btn"
-              className="button-num btnW btnG btnF"
-              value={"7"}
-            >
-              7
-            </button>
-            <button
-              type="button"
-              onClick={getClick}
-              title="btn"
-              className="button-num btnW btnG btnF"
-              value={"8"}
-            >
-              8
-            </button>
-            <button
-              type="button"
-              onClick={getClick}
-              title="btn"
-              className="button-num btnW btnG btnF"
-              value={"9"}
-            >
-              9
-            </button>
-            <button
-              type="button"
-              onClick={getClick}
-              title="btn"
-              className="button-x btnO btnG btnF"
-              value={"*"}
-            >
-              x
-            </button>
-            <button
-              type="button"
-              onClick={getClick}
-              title="btn"
-              className="button-num btnW btnG btnF"
-              value={"4"}
-            >
-              4
-            </button>
-            <button
-              type="button"
-              onClick={getClick}
-              title="btn"
-              className="button-num btnW btnG btnF"
-              value={"5"}
-            >
-              5
-            </button>
-            <button
-              type="button"
-              onClick={getClick}
-              title="btn"
-              className="button-num btnW btnG btnF"
-              value={"6"}
-            >
-              6
-            </button>
-            <button
-              type="button"
-              onClick={getClick}
-              title="btn"
-              className="button-op btnO btnG btnF"
-              value={"-"}
-            >
-              -
-            </button>
-            <button
-              type="button"
-              onClick={getClick}
-              title="btn"
-              className="button-num btnW btnG btnF"
-              value={"1"}
-            >
-              1
-            </button>
-            <button
-              type="button"
-              onClick={getClick}
-              title="btn"
-              className="button-num btnW btnG btnF"
-              value={"2"}
-            >
-              2
-            </button>
-            <button
-              type="button"
-              onClick={getClick}
-              title="btn"
-              className="button-num btnW btnG btnF"
-              value={"3"}
-            >
-              3
-            </button>
-            <button
-              type="button"
-              onClick={getClick}
-              title="btn"
-              className="button-op btnO btnG btnF"
-              value={"+"}
-            >
-              +
-            </button>
-            <button
-              type="button"
-              className="material-icons-outlined iconOnOff button-on-off btnG btnO"
-              onClick={getClick}
-              title="btn"
-              value={"PWR"}
-            >
-              &#xe8ac;
-            </button>
-            <button
-              type="button"
-              onClick={getClick}
-              title="btn"
-              className="button-num btnW btnG btnF"
-              value={"0"}
-            >
-              0
-            </button>
-            <button
-              type="button"
-              onClick={getClick}
-              title="btn"
-              className="button-d btnW btnG btnF"
-              value={"."}
-            >
-              ·
-            </button>
-            <button
-              type="button"
-              onClick={getClick}
-              title="btn"
-              className="button-op btnO btnG btnF"
-              value={"EQ"}
-            >
-              =
-            </button>
+            <button id="clear" type="button" onClick={getClick} title="btn" className="button-ac btnO btnG btnF" value={"C"}>C</button>
+            <button id="backspace" type="button" onClick={getClick} title="btn" className="material-icons-outlined iconBS button-bs btnO btnG" value={"BS"}>&#xe14a;</button>
+            <button id="percent" type="button" onClick={getClick} title="btn" className="button-cent btnO btnG btnF" value={"%"}>%</button>
+            <button id="divide" type="button" onClick={getClick} title="btn" className="button-op btnO btnG btnF" value={"/"}>÷</button>
+            <button id="seven" type="button" onClick={getClick} title="btn" className="button-num btnW btnG btnF" value={"7"}>7</button>
+            <button id="eight" type="button" onClick={getClick} title="btn" className="button-num btnW btnG btnF" value={"8"}>8</button>
+            <button id="nine" type="button" onClick={getClick} title="btn" className="button-num btnW btnG btnF" value={"9"}>9</button>
+            <button id="multiply" type="button" onClick={getClick} title="btn" className="button-x btnO btnG btnF" value={"*"}>x</button>
+            <button id="four" type="button" onClick={getClick} title="btn" className="button-num btnW btnG btnF" value={"4"}>4</button>
+            <button id="five" type="button" onClick={getClick} title="btn" className="button-num btnW btnG btnF" value={"5"}>5</button>
+            <button id="six" type="button" onClick={getClick} title="btn" className="button-num btnW btnG btnF" value={"6"}>6</button>
+            <button id="subtract" type="button" onClick={getClick} title="btn" className="button-op btnO btnG btnF" value={"-"}>-</button>
+            <button id="one" type="button" onClick={getClick} title="btn" className="button-num btnW btnG btnF" value={"1"}>1</button>
+            <button id="two" type="button" onClick={getClick} title="btn" className="button-num btnW btnG btnF" value={"2"}>2</button>
+            <button id="three" type="button" onClick={getClick} title="btn" className="button-num btnW btnG btnF" value={"3"}>3</button>
+            <button id="add" type="button" onClick={getClick} title="btn" className="button-op btnO btnG btnF" value={"+"}>+</button>
+            <button id="power" type="button" onClick={getClick} title="btn" className="material-icons-outlined iconOnOff button-on-off btnG btnO" value={"PWR"}>&#xe8ac;</button>
+            <button id="zero" type="button" onClick={getClick} title="btn" className="button-num btnW btnG btnF" value={"0"}>0</button>
+            <button id="decimal" type="button" onClick={getClick} title="btn" className="button-d btnW btnG btnF" value={"."}>.</button>
+            <button id="equals" type="button" onClick={getClick} title="btn" className="button-op btnO btnG btnF" value={"EQ"}>=</button>
           </div>
         </div>
       )}

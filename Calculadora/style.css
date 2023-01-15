@@ -18,7 +18,7 @@ html {
   margin: auto;
 }
 
-body {
+#body {
   --fontSize: 20px;
   --titleFontSize: 110%;
   --questFontSize: 120%;
