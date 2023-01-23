@@ -19,6 +19,7 @@ html {
 }
 
 body {
+  --titleAnim: wheell;
   --fontSize: 20px;
   --titleFontSize: 110%;
   --questFontSize: 120%;
@@ -147,6 +148,19 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   color: white;
+  animation-name: var(--titleAnim);
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes wheel {
+  0%{
+      transform: rotate(0deg);
+  }
+  100%{
+      transform: rotate(360deg);
+  }
 }
 
 /* ---------------------------------------------------------- */
@@ -316,6 +330,10 @@ body {
 
 .btnG {
   background-color: black;
+}
+
+.btnG:hover {
+  background-color: rgb(80, 202, 80);
 }
 
 /*.btnF {

@@ -115,6 +115,13 @@ function Calculator() {
         colorParse = "gray";
         colorAns = "white";
       }
+      if (title == "WTF...") {
+        console.log("deu");
+        idBody.style.setProperty('--titleAnim', 'wheel');
+      } else if (title != "WTF...") {
+        console.log("num deu");
+        idBody.style.setProperty('--titleAnim', 'wheell');
+      }
       idBody.style.setProperty('--colorQuest', colorQuest);
       idBody.style.setProperty('--colorParse', colorParse);
       idBody.style.setProperty('--colorAns', colorAns);
