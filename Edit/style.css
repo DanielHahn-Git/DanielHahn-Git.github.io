@@ -1,0 +1,68 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  /*font-family: Verdana, Geneva, Tahoma;*/
+  font-family: Electrolize;
+  font-weight: normal;
+  /* font-size: 5vh; */
+}
+
+::placeholder {
+  color: white;
+}
+
+html {
+  max-width: max-content;
+  max-height: max-content;
+  margin: auto;
+}
+
+#body {
+  --fontSize: 20px;
+  --titleFontSize: 110%;
+  --questFontSize: 120%;
+  --parseFontSize: 120%;
+  --ansFontSize: 120%;
+  --widthRoot: 46.8vh;
+  --heightRoot: 90vh;
+  /* 640px; */
+  --minWidthRoot: 188px;
+  --maxWidthRoot: 465px;
+  --minHeightRoot: 362px;
+  --maxHeightRoot: 895px;
+  --colorQuest: white;
+  --colorParse: white;
+  --colorAns: gray;
+  --border: 1px solid white;
+  font-size: var(--fontSize);
+  background-color: rgba(0, 0, 0, 0.7);
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+#root {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  width: var(--widthRoot);
+  height: var(--heightRoot);
+  max-width: var(--maxWidthRoot);
+  min-width: var(--minWidthRoot);
+  max-height: var(--maxHeightRoot);
+  min-height: var(--minHeightRoot);
+}
+
+.frame {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
