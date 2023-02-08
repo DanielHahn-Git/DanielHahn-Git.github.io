@@ -2,14 +2,12 @@
 
 const { useState, useEffect } = React;
 
-var count = 1500;
-var pare = true;
-var countingSession = true;
+
 
 function App() {
-    return (
-        <CountDown />
-    );
+  return (
+    <CountDown />
+  );
 }
 /* function App() {
     return (
@@ -18,151 +16,163 @@ function App() {
         </React.StrictMode>
     );
 } */
+//var count = 120;
+var stoped = true;
+//var countingSession = true;
 
 function CountDown() {
-    const [sessionLength, setSessionLength] = useState(25);
-    const [breakLength, setBreakLength] = useState(5);
-    const [contador, setContador] = useState(printContador());
-    const [countLabel, setCountLabel] = useState(printCountLabel());
+  const [sessionLength, setSessionLength] = useState(1);
+  const [breakLength, setBreakLength] = useState(2);
+  const [contador, setContador] = useState(60);
+  const [countLabel, setCountLabel] = useState(true);
+  const [isRun, setIsRun] = useState(false);
 
-    function printContador() {
-        let min = Math.floor(count / 60);
-        let seg = count % 60;
-        return `${min}:${seg < 10 ? "0" + seg : seg}`;
+
+
+  function printContador(contador) {
+    let num = contador;
+    let min = Math.floor(num / 60);
+    let seg = num % 60;
+    return `${min}:${seg < 10 ? "0" + seg : seg}`;
+  }
+
+  function printCountLabel(countLabel) {
+    if (countLabel) {
+      return "Session";
+    } else {
+      return "Break";
     }
+  }
+  
+  function printIsRun(isRun) {
+    if (isRun) {
+      return "Stop";
+    } else {
+      return "Start";
+    }
+  }
 
-    function printCountLabel() {
-        if (countingSession === true) {
-            return "Session";
+  function contagem() {
+    let num = contador;
+    if (isRun) {
+      let intervalId = setInterval(() => {
+        if (stoped) {
+          clearInterval(intervalId);
+          console.log('stoped');
         } else {
-            return "Break";
+          num--;
+          setContador(num);
         }
+        if (num === 0) {
+          setContador(num);
+          console.log(contador + ' num 0');
+          clearInterval(intervalId);
+          setCountLabel(!countLabel);
+          //setIsRun(!isRun);
+          //stoped = !stoped;
+          console.log('pre timeout');
+          setTimeout(() => {
+            console.log('timeout');
+            contagem();
+          }, 7000);
+          console.log('pos timeout');
+        }
+      }, 100);
     }
+  }
 
-    function contagem() {
-        if (pare === false) {
-            let intervalId = setInterval(() => {
-                if (pare) {
-                    clearInterval(intervalId);
-                    setContador(printContador());
-                } else {
-                    setContador(printContador());
-                    console.log(count);
-                    count--;
-                }
-                if (count === 0) {
-                    console.log('setContador');
-                    setContador("0:00");
-                    console.log('clearInterval');
-                    clearInterval(intervalId);
-                    console.log('pare = true');
-                    pare = true;
-                    console.log('inverte countsession');
-                    countingSession = !countingSession;
-                    console.log('set countlabel');
-                    setCountLabel(printCountLabel());
-                    console.log('if countsession');
-                    countingSession
-                    ? (count = breakLength * 60)
-                    : (count = sessionLength * 60);
-                    console.log('setContador');
-                    setContador(printContador());
-                    console.log('para vai');
-                    para();
-                    console.log('para volta');
-                }
-            }, 100);
-        }
-    }
+  const funClick = {
+    para() {
+      console.log('para isRun ' + isRun);
+      console.log('para stoped ' + stoped);
+      setIsRun(!isRun);
+      stoped = !stoped;
+      console.log('1 para isRun ' + isRun);
+      console.log('1 para stoped ' + stoped);
+      
+/*      if (contador <= 0) return (stoped = true);
+      stoped = !stoped;
+      if (contador > 0) return contagem();*/
+    },
+    reset() {
+      stoped = true;
+      setCountLabel(true);
+      setContador(60);
+      setSessionLength(1);
+      setBreakLength(1);
+      setIsRun(false)
+    },
+    decSes() {
+      if (stoped === false) return;
+      sessionLength > 1 ?
+        setSessionLength(sessionLength - 1) :
+        setSessionLength(1);
+    },
+    incSes() {
+      if (stoped === false) return;
+      sessionLength < 60 ?
+        setSessionLength(sessionLength + 1) :
+        setSessionLength(60);
+    },
+    decBreak() {
+      if (stoped === false) return;
+      breakLength > 1 ? setBreakLength(breakLength - 1) : setBreakLength(1);
+    },
+    incBreak() {
+      if (stoped === false) return;
+      breakLength < 60 ? setBreakLength(breakLength + 1) : setBreakLength(60);
+    },
+  };
+  const para = funClick.para;
+  const reset = funClick.reset;
+  const decSes = funClick.decSes;
+  const incSes = funClick.incSes;
+  const decBreak = funClick.decBreak;
+  const incBreak = funClick.incBreak;
 
-    const funClick = {
-        para() {
-            if (count <= 0) return (pare = true);
-            pare = !pare;
-            if (count > 0) return contagem();
-        },
-        reset() {
-            pare = true;
-            countingSession = true;
-            count = 1500;
-            setSessionLength(25);
-            setBreakLength(5);
-            setContador(printContador());
-            setCountLabel(printCountLabel());
-        },
-        decSes() {
-            if (pare === false) return;
-            sessionLength > 1
-                ? setSessionLength(sessionLength - 1)
-                : setSessionLength(1);
-        },
-        incSes() {
-            if (pare === false) return;
-            sessionLength < 60
-                ? setSessionLength(sessionLength + 1)
-                : setSessionLength(60);
-        },
-        decBreak() {
-            if (pare === false) return;
-            breakLength > 1 ? setBreakLength(breakLength - 1) : setBreakLength(1);
-        },
-        incBreak() {
-            if (pare === false) return;
-            breakLength < 60 ? setBreakLength(breakLength + 1) : setBreakLength(60);
-        },
-    };
-    const para = funClick.para;
-    const reset = funClick.reset;
-    const decSes = funClick.decSes;
-    const incSes = funClick.incSes;
-    const decBreak = funClick.decBreak;
-    const incBreak = funClick.incBreak;
+  useEffect(() => {
+    countLabel ? setContador(sessionLength * 60) : setContador(breakLength * 60);
+  }, [sessionLength, breakLength, countLabel]);
+  
+  useEffect(() => {
+    console.log(isRun + '  useEffect');
+    isRun && contagem();
+  }, [isRun]);
+  
 
-    useEffect(() => {
-        if (countingSession) {
-            count = sessionLength * 60;
-            setContador(printContador());
-            setCountLabel(printCountLabel());
-        }
-    }, [sessionLength]);
-
-    useEffect(() => {
-        if (countingSession === false) {
-            count = breakLength * 60;
-            setContador(printContador());
-            setCountLabel(printCountLabel());
-        }
-    }, [breakLength]);
-
-    const getClick = (e) => {
-        let key = e.target.value;
-        key === "Start"
-            ? para()
-            : key === "Reset"
-                ? reset()
-                : key === "decSes"
-                    ? decSes()
-                    : key === "incSes"
-                        ? incSes()
-                        : key === "decBreak"
-                            ? decBreak()
-                            : key === "incBreak"
-                                ? incBreak()
-                                : console.log("getClick");
-    };
-    console.log(`${contador} cont`);
-    console.log(contador);
-    return (
-        <div className="frame">
+  const getClick = (e) => {
+    let key = e.target.value;
+    key === "Start" ?
+      para() :
+      key === "Reset" ?
+      reset() :
+      key === "decSes" ?
+      decSes() :
+      key === "incSes" ?
+      incSes() :
+      key === "decBreak" ?
+      decBreak() :
+      key === "incBreak" ?
+      incBreak() :
+      console.log("getClick");
+  };
+  console.log(`${sessionLength}  sessionLength`);
+  console.log(`${breakLength}  breakLength`);
+  console.log(`${contador} contador`);
+  console.log(`${countLabel} countLabel`);
+  console.log(`${isRun} isRun`);
+  console.log(`${stoped} stoped`);
+  return (
+    <div className="frame">
             <div className="header">
                 <h1 className="border">Pomodoro Timer</h1>
             </div>
             <div className="countdown">
                 <div className="count-title-div">
-                    <h3 id="timer-label" className="count-title">{countLabel}</h3>
+                    <h3 id="timer-label" className="count-title">{printCountLabel(countLabel)}</h3>
                 </div>
                 <div className="count-div">
-                    <span id="time-left" className="count-span">{contador}</span>
+                    <span id="time-left" className="count-span">{printContador(contador)}</span>
                 </div>
             </div>
             <div className="control-count-div">
@@ -173,7 +183,7 @@ function CountDown() {
                     value={"Start"}
                     onClick={getClick}
                 >
-                    Start
+                    {printIsRun(isRun)}
                 </button>
                 <button
                     id="reset"
@@ -248,7 +258,7 @@ function CountDown() {
                 </div>
             </div>
         </div>
-    );
+  );
 }
 
 const element = <App />;
