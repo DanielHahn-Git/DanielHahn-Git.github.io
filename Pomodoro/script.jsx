@@ -1,4 +1,4 @@
-"use strict";
+//"use strict";
 
 const { useState, useEffect } = React;
 
@@ -8,11 +8,16 @@ var countingSession = true;
 
 function App() {
     return (
+        <CountDown />
+    );
+}
+/* function App() {
+    return (
         <React.StrictMode>
             <CountDown />
         </React.StrictMode>
     );
-}
+} */
 
 function CountDown() {
     const [sessionLength, setSessionLength] = useState(1);
@@ -141,7 +146,6 @@ function CountDown() {
     console.log(contador + "  contador");
     return (
         <div className="frame">
-            <React.StrictMode>
             <div className="header">
                 <h1 className="border">Pomodoro Timer</h1>
             </div>
@@ -231,7 +235,6 @@ function CountDown() {
                     </div>
                 </div>
             </div>
-        </React.StrictMode>
         </div>
     );
 }
