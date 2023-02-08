@@ -1,8 +1,8 @@
-//"use strict";
+"use strict";
 
 const { useState, useEffect } = React;
 
-var count;
+var count = 1500;
 var pare = true;
 var countingSession = true;
 
@@ -20,7 +20,7 @@ function App() {
 } */
 
 function CountDown() {
-    const [sessionLength, setSessionLength] = useState(1);
+    const [sessionLength, setSessionLength] = useState(25);
     const [breakLength, setBreakLength] = useState(5);
     const [contador, setContador] = useState(printContador());
     const [countLabel, setCountLabel] = useState(printCountLabel());
@@ -46,22 +46,30 @@ function CountDown() {
                     clearInterval(intervalId);
                     setContador(printContador());
                 } else {
-                    count--;
                     setContador(printContador());
+                    console.log(count);
+                    count--;
                 }
                 if (count === 0) {
-                    countingSession
-                        ? (count = breakLength * 60)
-                        : (count = sessionLength * 60);
+                    console.log('setContador');
+                    setContador("0:00");
+                    console.log('clearInterval');
+                    clearInterval(intervalId);
+                    console.log('pare = true');
+                    pare = true;
+                    console.log('inverte countsession');
                     countingSession = !countingSession;
+                    console.log('set countlabel');
                     setCountLabel(printCountLabel());
-                    //console.log("pos count = 0, pre clearInterval");
-                    //clearInterval(intervalId);
-                    //console.log("pos clearInterval, pre printContador");
+                    console.log('if countsession');
+                    countingSession
+                    ? (count = breakLength * 60)
+                    : (count = sessionLength * 60);
+                    console.log('setContador');
                     setContador(printContador());
-                    //console.log("pos printContador, pre pare = true");
-                    //pare = true;
-                    //console.log("pos pare = true");
+                    console.log('para vai');
+                    para();
+                    console.log('para volta');
                 }
             }, 100);
         }
@@ -74,11 +82,13 @@ function CountDown() {
             if (count > 0) return contagem();
         },
         reset() {
-            if (pare === false) return;
-            setBreakLength(5);
-            setSessionLength(25);
+            pare = true;
+            countingSession = true;
             count = 1500;
+            setSessionLength(25);
+            setBreakLength(5);
             setContador(printContador());
+            setCountLabel(printCountLabel());
         },
         decSes() {
             if (pare === false) return;
@@ -112,6 +122,7 @@ function CountDown() {
         if (countingSession) {
             count = sessionLength * 60;
             setContador(printContador());
+            setCountLabel(printCountLabel());
         }
     }, [sessionLength]);
 
@@ -119,12 +130,12 @@ function CountDown() {
         if (countingSession === false) {
             count = breakLength * 60;
             setContador(printContador());
+            setCountLabel(printCountLabel());
         }
     }, [breakLength]);
 
     const getClick = (e) => {
         let key = e.target.value;
-        console.log(`${key}  getClick`);
         key === "Start"
             ? para()
             : key === "Reset"
@@ -139,11 +150,8 @@ function CountDown() {
                                 ? incBreak()
                                 : console.log("getClick");
     };
-
-    console.log("render");
-    console.log(count + "  count");
-    console.log(pare + "  pare");
-    console.log(contador + "  contador");
+    console.log(`${contador} cont`);
+    console.log(contador);
     return (
         <div className="frame">
             <div className="header">
@@ -151,15 +159,15 @@ function CountDown() {
             </div>
             <div className="countdown">
                 <div className="count-title-div">
-                    <h3 className="count-title">{countLabel}</h3>
+                    <h3 id="timer-label" className="count-title">{countLabel}</h3>
                 </div>
                 <div className="count-div">
-                    <span className="count-span">{contador}</span>
+                    <span id="time-left" className="count-span">{contador}</span>
                 </div>
             </div>
             <div className="control-count-div">
                 <button
-                    id="play_pause"
+                    id="start_stop"
                     className="play_pause ctrl-count"
                     type="button"
                     value={"Start"}
@@ -180,13 +188,14 @@ function CountDown() {
             <div className="ctrl">
                 <div className="inc-dec">
                     <div className="time-title">
-                        <h4>Session Length</h4>
+                        <h4 id="session-label">Session Length</h4>
                     </div>
                     <div className="ctrl-time container">
                         <div className="view item">
-                            <span className="skd-time">{sessionLength}</span>
+                            <span id="session-length" className="skd-time">{sessionLength}</span>
                         </div>
                         <button
+                            id="session-decrement"
                             type="button"
                             className="dec item"
                             title="dec"
@@ -196,6 +205,7 @@ function CountDown() {
                             -
                         </button>
                         <button
+                            id="session-increment"
                             type="button"
                             className="inc item"
                             title="inc"
@@ -208,13 +218,14 @@ function CountDown() {
                 </div>
                 <div className="inc-dec">
                     <div className="time-title">
-                        <h4>Break Length</h4>
+                        <h4 id="break-label">Break Length</h4>
                     </div>
                     <div className="ctrl-time container">
                         <div className="view item">
-                            <span className="skd-time">{breakLength}</span>
+                            <span id="break-length" className="skd-time">{breakLength}</span>
                         </div>
                         <button
+                            id="break-decrement"
                             type="button"
                             className="dec item"
                             title="dec"
@@ -224,6 +235,7 @@ function CountDown() {
                             -
                         </button>
                         <button
+                            id="break-increment"
                             type="button"
                             className="inc item"
                             title="inc"
