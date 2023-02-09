@@ -53,32 +53,32 @@ function CountDown() {
   }
 
   function contagem() {
+    console.log('1 inicio contagem  ' + contador);
     let num = contador;
     if (isRun) {
+    console.log('2 inicio isRun true  ' + contador);
       let intervalId = setInterval(() => {
+    console.log('3 inicio setInterval  ' + contador);
         if (stoped) {
           clearInterval(intervalId);
-          console.log('stoped');
+          console.log('★ stoped');
+        } 
+        if (num === 0) {
+          //setContador(num);
+          console.log('4 if num === 0  ' + contador);
+          clearInterval(intervalId);
+          console.log('5 after clearInterval  ' + contador);
         } else {
+          console.log('6 inicio else num--  ' + contador);
           num--;
           setContador(num);
+          console.log('7 fim else num--  ' + contador);
         }
-        if (num === 0) {
-          setContador(num);
-          console.log(contador + ' num 0');
-          clearInterval(intervalId);
-          setCountLabel(!countLabel);
-          //setIsRun(!isRun);
-          //stoped = !stoped;
-          console.log('pre timeout');
-          setTimeout(() => {
-            console.log('timeout');
-            contagem();
-          }, 7000);
-          console.log('pos timeout');
-        }
+          console.log('8 fim setInterval  ' + contador);
       }, 100);
+          console.log('9 fim if isRun true  ' + contador);
     }
+          console.log('10 fim contagem  ' + contador);
   }
 
   const funClick = {
@@ -135,7 +135,7 @@ function CountDown() {
   }, [sessionLength, breakLength, countLabel]);
   
   useEffect(() => {
-    console.log(isRun + '  useEffect');
+    console.log(isRun + '  useEffect isRun state');
     isRun && contagem();
   }, [isRun]);
   
@@ -158,8 +158,10 @@ function CountDown() {
   };
   console.log(`${sessionLength}  sessionLength`);
   console.log(`${breakLength}  breakLength`);
-  console.log(`${contador} contador`);
-  console.log(`${countLabel} countLabel`);
+  console.log(`${contador} contador state`);
+  console.log(`${printContador(contador)} contador functiom`);
+  console.log(`${countLabel} countLabel state`);
+  console.log(`${printCountLabel(countLabel)} countLabel functiom`);
   console.log(`${isRun} isRun`);
   console.log(`${stoped} stoped`);
   return (
