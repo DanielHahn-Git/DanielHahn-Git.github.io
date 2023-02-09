@@ -16,128 +16,59 @@ function App() {
         </React.StrictMode>
     );
 } */
-//var count = 120;
-var stoped = true;
-//var countingSession = true;
 
 function CountDown() {
-  const [sessionLength, setSessionLength] = useState(1);
-  const [breakLength, setBreakLength] = useState(2);
-  const [contador, setContador] = useState(60);
+  const [sessionLength, setSessionLength] = useState(25);
+  const [breakLength, setBreakLength] = useState(5);
+  const [contador, setContador] = useState(1500);
   const [countLabel, setCountLabel] = useState(true);
   const [isRun, setIsRun] = useState(false);
-
-
-
-  function printContador(contador) {
-    let num = contador;
-    let min = Math.floor(num / 60);
-    let seg = num % 60;
-    return `${min}:${seg < 10 ? "0" + seg : seg}`;
-  }
-
-  function printCountLabel(countLabel) {
-    if (countLabel) {
-      return "Session";
-    } else {
-      return "Break";
-    }
-  }
+  const [reset, setReset] = useState(true)
   
-  function printIsRun(isRun) {
-    if (isRun) {
-      return "Stop";
-    } else {
-      return "Start";
+
+  /* useEffect(() => {
+    if (countLabel === true) {
+      setContador(contador => sessionLength * 60);
     }
-  }
-
-  function contagem() {
-    console.log('1 inicio contagem  ' + contador);
-    let num = contador;
-    if (isRun) {
-    console.log('2 inicio isRun true  ' + contador);
-      let intervalId = setInterval(() => {
-    console.log('3 inicio setInterval  ' + contador);
-        if (stoped) {
-          clearInterval(intervalId);
-          console.log('★ stoped');
-        } 
-        if (num === 0) {
-          //setContador(num);
-          console.log('4 if num === 0  ' + contador);
-          clearInterval(intervalId);
-          console.log('5 after clearInterval  ' + contador);
-        } else {
-          console.log('6 inicio else num--  ' + contador);
-          num--;
-          setContador(num);
-          console.log('7 fim else num--  ' + contador);
-        }
-          console.log('8 fim setInterval  ' + contador);
-      }, 100);
-          console.log('9 fim if isRun true  ' + contador);
+    return () => {
+      //console.log('session');
     }
-          console.log('10 fim contagem  ' + contador);
-  }
-
-  const funClick = {
-    para() {
-      console.log('para isRun ' + isRun);
-      console.log('para stoped ' + stoped);
-      setIsRun(!isRun);
-      stoped = !stoped;
-      console.log('1 para isRun ' + isRun);
-      console.log('1 para stoped ' + stoped);
-      
-/*      if (contador <= 0) return (stoped = true);
-      stoped = !stoped;
-      if (contador > 0) return contagem();*/
-    },
-    reset() {
-      stoped = true;
-      setCountLabel(true);
-      setContador(60);
-      setSessionLength(1);
-      setBreakLength(1);
-      setIsRun(false)
-    },
-    decSes() {
-      if (stoped === false) return;
-      sessionLength > 1 ?
-        setSessionLength(sessionLength - 1) :
-        setSessionLength(1);
-    },
-    incSes() {
-      if (stoped === false) return;
-      sessionLength < 60 ?
-        setSessionLength(sessionLength + 1) :
-        setSessionLength(60);
-    },
-    decBreak() {
-      if (stoped === false) return;
-      breakLength > 1 ? setBreakLength(breakLength - 1) : setBreakLength(1);
-    },
-    incBreak() {
-      if (stoped === false) return;
-      breakLength < 60 ? setBreakLength(breakLength + 1) : setBreakLength(60);
-    },
-  };
-  const para = funClick.para;
-  const reset = funClick.reset;
-  const decSes = funClick.decSes;
-  const incSes = funClick.incSes;
-  const decBreak = funClick.decBreak;
-  const incBreak = funClick.incBreak;
-
-  useEffect(() => {
-    countLabel ? setContador(sessionLength * 60) : setContador(breakLength * 60);
-  }, [sessionLength, breakLength, countLabel]);
+  }, [sessionLength, countLabel]);
   
   useEffect(() => {
-    console.log(isRun + '  useEffect isRun state');
-    isRun && contagem();
+    if (countLabel === false) {
+      setContador(contador => breakLength * 60);
+    }
+    return () => {
+      //console.log('break');
+    }
+  }, [breakLength, countLabel]); */
+
+  useEffect(() => {
+    if (isRun) {
+     // console.log(`${contador}  contador 1`);
+      const intervalId = setInterval(() => {
+       // console.log(`${contador}  contador 2`);
+        setContador(contador => contador - 1);
+        console.log(`${contador}  contador 3`);
+      }, 100,[contador]);
+     // console.log(`${contador}  contador 4`);
+      return () => {
+        clearInterval(intervalId);
+      //console.log('session');
+      }
+    }
   }, [isRun]);
+
+  useEffect(() => {
+    if (contador === 0) {
+      //setIsRun(!isRun);
+      setCountLabel(!countLabel);
+    }
+    return () => {
+     // console.log('contador');
+    }
+  }, [contador])
   
 
   const getClick = (e) => {
@@ -156,14 +87,54 @@ function CountDown() {
       incBreak() :
       console.log("getClick");
   };
-  console.log(`${sessionLength}  sessionLength`);
-  console.log(`${breakLength}  breakLength`);
+
+  const funClick = {
+    para() {
+      setIsRun(!isRun);
+    },
+    reset() {
+      setSessionLength(25);
+      setBreakLength(5);
+      setContador(1500);
+      setIsRun(false);
+      setCountLabel(true);
+    },
+    decSes() {
+      if (isRun === true) return;
+      sessionLength > 1 ?
+        setSessionLength(sessionLength - 1) :
+        setSessionLength(1);
+    },
+    incSes() {
+      if (isRun === true) return;
+      sessionLength < 60 ?
+        setSessionLength(sessionLength + 1) :
+        setSessionLength(60);
+    },
+    decBreak() {
+      if (isRun === true) return;
+      breakLength > 1 ? setBreakLength(breakLength - 1) : setBreakLength(1);
+    },
+    incBreak() {
+      if (isRun === true) return;
+      breakLength < 60 ? setBreakLength(breakLength + 1) : setBreakLength(60);
+    },
+  };
+  //const para = funClick.para;
+  //const reset = funClick.reset;
+  const decSes = funClick.decSes;
+  const incSes = funClick.incSes;
+  const decBreak = funClick.decBreak;
+  const incBreak = funClick.incBreak;
+
+  
+  //console.log(`${sessionLength}  sessionLength`);
+  //console.log(`${breakLength}  breakLength`);
+
   console.log(`${contador} contador state`);
-  console.log(`${printContador(contador)} contador functiom`);
-  console.log(`${countLabel} countLabel state`);
-  console.log(`${printCountLabel(countLabel)} countLabel functiom`);
-  console.log(`${isRun} isRun`);
-  console.log(`${stoped} stoped`);
+  //console.log(`${countLabel} countLabel state`);
+  //console.log(`${printCountLabel(countLabel)} countLabel function`);
+  //console.log(`${isRun} isRun`);
   return (
     <div className="frame">
             <div className="header">
@@ -171,10 +142,10 @@ function CountDown() {
             </div>
             <div className="countdown">
                 <div className="count-title-div">
-                    <h3 id="timer-label" className="count-title">{printCountLabel(countLabel)}</h3>
+                    <h3 id="timer-label" className="count-title">{countLabel ? "Session" : "Break"}</h3>
                 </div>
                 <div className="count-div">
-                    <span id="time-left" className="count-span">{printContador(contador)}</span>
+                    <span id="time-left" className="count-span">{`${Math.floor(contador / 60) < 10 ? "0" + Math.floor(contador / 60) : Math.floor(contador / 60) }:${contador % 60 < 10 ? "0" + contador % 60 : contador % 60}`}</span>
                 </div>
             </div>
             <div className="control-count-div">
@@ -183,16 +154,22 @@ function CountDown() {
                     className="play_pause ctrl-count"
                     type="button"
                     value={"Start"}
-                    onClick={getClick}
+                    onClick={() => setIsRun(!isRun)}
                 >
-                    {printIsRun(isRun)}
+                    {isRun ? "Stop" : "Start"}
                 </button>
                 <button
                     id="reset"
                     className="reset ctrl-count"
                     type="button"
                     value={"Reset"}
-                    onClick={getClick}
+                    onClick={() => {
+                      setSessionLength(25);
+                      setBreakLength(5);
+                      setContador(1500);
+                      setCountLabel(true);
+                      setIsRun(false);
+                    }}
                 >
                     Reset
                 </button>
@@ -212,7 +189,15 @@ function CountDown() {
                             className="dec item"
                             title="dec"
                             value={"decSes"}
-                            onClick={getClick}
+                            onClick={() => {
+                              if (isRun === true) return;
+                              sessionLength > 1 ?
+                              setSessionLength(sessionLength => sessionLength - 1) :
+                              setSessionLength(sessionLength => 1);
+                              if (countLabel === true) {
+                              setContador(contador => (sessionLength - 1) * 60);
+                              }
+                            }}
                         >
                             -
                         </button>
@@ -222,7 +207,15 @@ function CountDown() {
                             className="inc item"
                             title="inc"
                             value={"incSes"}
-                            onClick={getClick}
+                            onClick={() => {
+                              if (isRun === true) return;
+                              sessionLength < 60 ?
+                              setSessionLength(sessionLength => sessionLength  + 1) :
+                              setSessionLength(sessionLength => 60);
+                              if (countLabel === true) {
+                                setContador(contador => (sessionLength + 1) * 60);
+                                }
+                            }}
                         >
                             +
                         </button>
@@ -242,7 +235,15 @@ function CountDown() {
                             className="dec item"
                             title="dec"
                             value={"decBreak"}
-                            onClick={getClick}
+                            onClick={() => {
+                              if (isRun === true) return;
+                              breakLength > 1 ?
+                              setBreakLength(breakLength => breakLength - 1) :
+                              setBreakLength(breakLength => 1);
+                              if (countLabel === false) {
+                              setContador(contador => (breakLength - 1) * 60);
+                              }
+                            }}
                         >
                             -
                         </button>
@@ -252,7 +253,15 @@ function CountDown() {
                             className="inc item"
                             title="inc"
                             value={"incBreak"}
-                            onClick={getClick}
+                            onClick={() => {
+                              if (isRun === true) return;
+                              breakLength < 60 ?
+                              setBreakLength(breakLength => breakLength  + 1) :
+                              setBreakLength(breakLength => 60);
+                              if (countLabel === false) {
+                                setContador(contador => (breakLength + 1) * 60);
+                                }
+                            }}
                         >
                             +
                         </button>
@@ -267,3 +276,35 @@ const element = <App />;
 const container = document.getElementById("root");
 const root = ReactDOM.createRoot(container);
 root.render(element);
+
+
+
+/* 
+function contagem() {
+  console.log('1 inicio contagem  ' + contador);
+  let num = contador;
+  if (isRun) {
+  console.log('2 inicio isRun true  ' + contador);
+    let intervalId = setInterval(() => {
+  console.log('3 inicio setInterval  ' + contador);
+      if (stoped) {
+        clearInterval(intervalId);
+        console.log('★ stoped');
+      } 
+      if (num === 0) {
+        //setContador(num);
+        console.log('4 if num === 0  ' + contador);
+        clearInterval(intervalId);
+        console.log('5 after clearInterval  ' + contador);
+      } else {
+        console.log('6 inicio else num--  ' + contador);
+        num--;
+        setContador(num);
+        console.log('7 fim else num--  ' + contador);
+      }
+        console.log('8 fim setInterval  ' + contador);
+    }, 100);
+        console.log('9 fim if isRun true  ' + contador);
+  }
+        console.log('10 fim contagem  ' + contador);
+} */
