@@ -94,7 +94,10 @@ const CountDown = () => {
   }
   useEffect(() => {
     if (timer === 50) {
+      const audio = new Audio("beep.mp3");
+      audio.play();
       setIntervalId(intervalId => clearInterval(intervalId));
+      
       /*if (timerType === "Session") {
         setTimer(timer => 60 * breakLength)
         setTimerType(timerType => "Break");
@@ -107,10 +110,6 @@ const CountDown = () => {
       }*/
       }
   }, [timer]);
-  
-  const playAlarm = () => {
-    audioRef.current.play();
-  }
   
   const countDown = () => {
     setIntervalId(intervalId => setInterval(() => {
