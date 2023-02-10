@@ -1,6 +1,6 @@
 //"use strict";
 
-const { useState, useEffect } = React;
+const { useState, useEffect, useRef } = React;
 
 
 
@@ -17,13 +17,24 @@ function App() {
     );
 } */
 
-function CountDown() {
+const CountDown = () => {
   const [sessionLength, setSessionLength] = useState(2);
   const [breakLength, setBreakLength] = useState(3);
   const [contador, setContador] = useState(60);
   const [countLabel, setCountLabel] = useState(true);
   const [isRun, setIsRun] = useState(false);
-  const [reset, setReset] = useState(true)
+  const [reset, setReset] = useState(true);
+  const [play, setPlay] = useState(false);
+  const audioRef = useRef(null);
+
+  const handlePlay = () => {
+    if (play) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+    setPlay(!play);
+  }
 
 
   /* useEffect(() => {
@@ -49,6 +60,9 @@ function CountDown() {
       // console.log(`${contador}  contador 1`);
       const intervalId = setInterval(() => {
         // console.log(`${contador}  contador 2`);
+        // console.log(`${contador}  contador 2`);
+        let countAux = contador;
+        console.log(`${countAux}  countAux 2`);
         setContador(contador => contador - 1);
         console.log(`${contador}  contador 3`);
       }, 100, [contador]);
@@ -86,6 +100,7 @@ function CountDown() {
     <div className="countdown">
       <div className="count-title-div">
         <h3 id="timer-label" className="count-title">{countLabel ? "Session" : "Break"}</h3>
+        <audio ref={audioRef} src="./beep.mp3" controls={false}></audio>
       </div>
       <div className="count-div">
         <span id="time-left" className="count-span">{`${Math.floor(contador / 60) < 10 ? "0" + Math.floor(contador / 60) : Math.floor(contador / 60) }:${contador % 60 < 10 ? "0" + contador % 60 : contador % 60}`}</span>
