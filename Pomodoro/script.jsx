@@ -6,14 +6,6 @@ const {
   useRef
 } = React;
 
-const idRoot = document.getElementById("root");
-
-var docClientWidth = document.documentElement.clientWidth;
-var docClientHeight = document.documentElement.clientHeight;
-var bodyClientWidth = idRoot.clientWidth;
-var bodyClientHeight = idRoot.clientHeight;
-var fontSize = (bodyClientWidth / 100) * 10;
-
 
 function App() {
   return (
@@ -32,71 +24,6 @@ const CountDown = () => {
   const [intervalId, setIntervalId] = useState("");
   //const [play, setPlay] = useState(false);
   const audioRef = useRef(null);
-  
-  
-  const sizes = {
-      getDocSize() {
-        docClientWidth = document.documentElement.clientWidth;
-        docClientHeight = document.documentElement.clientHeight;
-        let div = docClientHeight / docClientWidth;
-        //1923
-        if (div > 1.923) {
-          return smallWidth();
-        }
-        /*if (docClientHeight < 402) {
-          return littleHeight();
-        }*/
-        /*if (docClientHeight > 402) {
-          setLand(false);
-        }*/
-        bodyClientWidth = idRoot.clientWidth;
-        bodyClientHeight = idRoot.clientHeight;
-        setRootSize();
-      },
-      setRootSize() {
-        fontSize = (bodyClientWidth / 100) * 10;
-        console.log(fontSize + 'fontSize setRootSize');
-        idRoot.style.setProperty('--fontSize', fontSize + 'px');
-        idRoot.style.setProperty('--widthRoot', '46.8vh');
-        idRoot.style.setProperty('--heightRoot', '90vh');
-        idRoot.style.setProperty('--minWidthRoot', '188px');
-        idRoot.style.setProperty('--maxWidthRoot', '465px');
-        idRoot.style.setProperty('--minHeightRoot', '362px');
-        idRoot.style.setProperty('--maxHeightRoot', '895px');
-      },
-      smallWidth() {
-        let width = (docClientWidth / 100) * 90;
-        let height = width / 0.52;
-        idRoot.style.setProperty('--widthRoot', width + 'px');
-        idRoot.style.setProperty('--heightRoot', height + 'px');
-        idRoot.style.setProperty('--minWidthRoot', '188px');
-        idRoot.style.setProperty('--maxWidthRoot', '465px');
-        idRoot.style.setProperty('--minHeightRoot', '362px');
-        idRoot.style.setProperty('--maxHeightRoot', '895px');
-        bodyClientWidth = idRoot.clientWidth;
-        bodyClientHeight = idRoot.clientHeight;
-        fontSize = (bodyClientWidth / 100) * 10;
-        console.log(fontSize + 'fontSize small');
-        idRoot.style.setProperty('--fontSize', fontSize + 'px');
-      }
-  }
-  const getDocSize = sizes.getDocSize;
-  const setRootSize = sizes.setRootSize;
-  const smallWidth = sizes.smallWidth;
-  
-  
-  useEffect(() => {
-    console.log('eEffect');
-    window.addEventListener('resize', getDocSize);
-  }, []);
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   const setBreakTime = (e) => {
@@ -206,12 +133,6 @@ const CountDown = () => {
   }; 
 
 
-  //console.log(`${sessionLength}  sessionLength`);
-  //console.log(`${breakLength}  breakLength`);
-  //console.log(`${timer}  timer state render`);
-  //console.log(`${timerType} timerType state`);
-  //console.log(`${printCountLabel(timerType)} timerType function`);
-  //console.log(`${timerState} timerState`);
   return (
     <div className="frame">
       <div className="header">
@@ -302,6 +223,10 @@ const CountDown = () => {
       </div>
   );
 }
+
+
+
+
 const element = <App />;
 const container = document.getElementById("root");
 const root = ReactDOM.createRoot(container);
