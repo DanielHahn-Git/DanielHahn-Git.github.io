@@ -1,0 +1,90 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: Verdana, Geneva, Tahoma;
+}
+
+::placeholder {
+  color: white;
+}
+
+html {
+  max-width: max-content;
+  max-height: max-content;
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+body {
+  /* --fontSize: 3px; */
+  --headFontSize: 130%;
+  --titleFontSize: 150%;
+  --widthRoot: 95vw;
+  --heightRoot: 48.43vw;
+  --minWidthRoot: 280px;
+  --maxWidthRoot: 95vw;
+  --minHeightRoot: 80px;
+  --maxHeightRoot: 95vh;
+  --border: 1px solid white;
+  /* font-size: var(--fontSize); */
+  /* font-size: 20px; */
+  background-color: rgba(0, 0, 0, 0.7);
+  margin: 0;
+  padding: 0;
+}
+
+.root {
+  background-color: antiquewhite;
+  /*border: 3px solid blue;*/
+  margin: 0;
+  padding: 0;
+  max-width: 95vw;
+  min-width: 342px;
+  min-height: 192.27px;
+  max-height: 95vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  /* border: 3px solid blue; */
+}
+
+/* ---------------------------------------------------------- */
+.svg {
+  /* width: 100%;
+  height: 100%; */
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* border: 3px solid red; */
+}
+
+.tooltip {
+  /* width: 20%;
+  height: 40%; */
+  position: absolute;
+  /* margin-left: 50%;
+  margin-top: 50%; */
+  /* top: 30%;
+  left: 40%; */
+  border: 3px solid red;
+}
+/* ---------------------------------------------------------- */
+
+/* ---------------------------------------------------------- */
+
+/* ---------------------------------------------------------- */
+
+/* ---------------------------------------------------------- */
+
+/* ---------------------------------------------------------- */
