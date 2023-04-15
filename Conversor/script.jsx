@@ -1,14 +1,5 @@
 const { useState, useEffect, useRef } = React;
 
-function App() {
-  return (
-    <h1 />
-    )
-}
+const idRoot = document.getElementById("root");
+const idBody = document.getElementById("body");
 
-
-
-const element = <App />;
-const root = ReactDOM.createRoot(document.getElementById("root"));
-
-root.render(element);
