@@ -2,10 +2,8 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  /*font-family: Verdana, Geneva, Tahoma;*/
   font-family: Electrolize;
   font-weight: normal;
-  /* font-size: 5vh; */
 }
 
 ::placeholder {
@@ -16,6 +14,9 @@ html {
   max-width: max-content;
   max-height: max-content;
   margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }
 
 body {
@@ -27,7 +28,6 @@ body {
   --ansFontSize: 120%;
   --widthRoot: 46.8vh;
   --heightRoot: 90vh;
-  /* 640px; */
   --minWidthRoot: 188px;
   --maxWidthRoot: 465px;
   --minHeightRoot: 362px;
@@ -40,11 +40,11 @@ body {
   background-color: rgba(0, 0, 0, 0.7);
   margin: 0;
   padding: 0;
-  position: absolute;
+  /*position: absolute;
   top: 50%;
   left: 50%;
   -moz-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);*/
 }
 
 #root {
@@ -57,6 +57,11 @@ body {
   min-width: var(--minWidthRoot);
   max-height: var(--maxHeightRoot);
   min-height: var(--minHeightRoot);
+  /*position: absolute;*/
+  top: 50%;
+  left: 50%;
+  -moz-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 .frame {
@@ -86,7 +91,6 @@ body {
   box-sizing: border-box;
   position: relative;
   max-width: 90%;
-  /*font-family: Electrolize;*/
   text-align: center;
   margin: 0;
   padding: 0;
@@ -274,9 +278,6 @@ body {
   border: none;
 }
 
-/* .black {
-    color: black !important;
-} */
 
 .button-num {
   font-size: 111%;
@@ -324,10 +325,6 @@ body {
   font-size: 120%;
 }
 
-/* .button-op:nth-of-type(2) {
-    font-size: 1em;
-} */
-
 .btnG {
   background-color: black;
 }
@@ -336,9 +333,6 @@ body {
   background-color: rgb(80, 202, 80);
 }
 
-/*.btnF {
-  font-family: Electrolize;
-}*/
 
 .button-ac {
   font-size: 107%;
@@ -390,35 +384,8 @@ body {
     format("woff2");
 }
 
-/* latin-ext */
-/*@font-face {
-  font-family: "Titillium Web";
-  font-style: normal;
-  font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/titilliumweb/v15/NaPecZTIAOhVxoMyOr9n_E7fdM3mDbRS.woff2)
-    format("woff2");
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB,
-    U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}*/
-
-/* latin */
-/*@font-face {
-  font-family: "Titillium Web";
-  font-style: normal;
-  font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/titilliumweb/v15/NaPecZTIAOhVxoMyOr9n_E7fdMPmDQ.woff2)
-    format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
-    U+FEFF, U+FFFD;
-}*/
-
 .material-icons-outlined {
   font-family: "Material Icons Outlined";
-  /* font-weight: normal;
-    font-style: normal;
-    font-size: 24px;
-    line-height: 1; */
   letter-spacing: normal;
   text-transform: none;
   display: inline-block;
@@ -427,116 +394,3 @@ body {
   direction: ltr;
 }
 
-/* input {
-    border: none;
-} */
-
-/* .calculator-title {
-    box-sizing: border-box;
-    width: 50%;
-    border: 3px solid black;
-    /* height: 12%; */
-/* padding: 0; 
-    margin: 0 auto;
-    position: relative;
-    top: 0px;
-    padding: 0;
-    /* padding-bottom: 10%; */
-/* margin-top: 5%; */
-/* margin-bottom: 2.5%; */
-/* max-width: 430px;
-    min-width: 340px; 
-} */
-
-/* .title {
-    color: rgb(80, 100, 110);
-    text-align: center;
-    padding: 0;
-    /* padding-bottom: 10%; 
-    margin: 0;
-    
-    z-index: -1;
-    width: 100%;
-    /* height: 100%; 
-    font-weight: bold;
-    font-family: Electrolize;
-    /* font-size: 2em; 
-} */
-
-/* .screens {
-    box-sizing: border-box;
-    border: 3px solid mediumaquamarine;
-    position: relative;
-    top: 8%;
-    display: grid;
-    /* grid-column: 1; */
-/* grid-row: 3; 
-    background-color: black;
-    align-content: stretch;
-    width: 100%;
-    height: 40%;
-    align-items: center;
-} */
-
-/* .screen-parsed {
-    box-sizing: border-box;
-    border: 3px solid yellow;
-    height: 25%;
-    padding: 0;
-    margin: 0;
-    /* padding-top: 7%; */
-/* width: 100%;
-    height: 45%; 
-    position: relative;
-    /* top: 37%; */
-/* line-height: 1em; */
-/* font-size: 3em; 
-    z-index: 1;
-}
- */
-
-/*  .frame {
-    border: 5px solid black;
-    padding: 30px;
-    margin: 3px;
-} */
-/* 
-.mainCalc {
-    border: 5px solid red;
-    padding: 30px;
-    margin: 30px;
-}
-
-.teste {
-    color: blue;
-    border: 20px solid black;
-    padding: 30px;
-    margin: 30px;
-}
- 
-
-.button-grid {
-      display: grid;
-  justify-content: center;
-  align-content: center;
-  min-height: 80vh;
-  grid-template-columns: repeat(4, 120px);
-  grid-template-rows: minmax(120px, auto) repeat(5, 100px);
-  padding: 20px;
-  padding: 20px;
-  border: 2px solid black;
-}
-
-
- */
-/* .but {
-    border: 5px solid black;
-} */
-/* .test {
-    height: 20px;
-}
-
-.double {
-    height: 40px;
-}
- */
