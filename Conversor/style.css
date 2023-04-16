@@ -21,7 +21,7 @@ html {
 
 body {
   --titleAnim: wheell;
-  --fontSize: 20px;
+  /* --fontSize: 20px; */
   --titleFontSize: 110%;
   --questFontSize: 120%;
   --parseFontSize: 120%;
@@ -36,7 +36,7 @@ body {
   --colorParse: white;
   --colorAns: gray;
   --border: 1px solid white;
-  font-size: var(--fontSize);
+  /* font-size: var(--fontSize); */
   background-color: rgba(0, 0, 0, 0.7);
   margin: 0;
   padding: 0;
@@ -47,17 +47,22 @@ body {
   transform: translate(-50%, -50%);*/
 }
 
-#root {
-  margin: 0;
-  padding: 0;
+.root {
   display: grid;
-  width: var(--widthRoot);
+  /* width: var(--widthRoot);
   height: var(--heightRoot);
   max-width: var(--maxWidthRoot);
   min-width: var(--minWidthRoot);
   max-height: var(--maxHeightRoot);
-  min-height: var(--minHeightRoot);
+  min-height: var(--minHeightRoot); */
   /*position: absolute;*/
+  margin: 0;
+  padding: 0;
+  width: 46.8vh;
+  min-width: 188px;
+  max-width: 465px;
+  min-height: 362px;
+  max-height: 895px;
   top: 50%;
   left: 50%;
   -moz-transform: translate(-50%, -50%);
@@ -159,37 +164,37 @@ body {
 }
 
 @keyframes wheel {
-  0%{
-      transform: rotate(0deg);
+  0% {
+    transform: rotate(0deg);
   }
-  100%{
-      transform: rotate(360deg);
+  100% {
+    transform: rotate(360deg);
   }
 }
 
 /* ---------------------------------------------------------- */
 .output-question {
-    height: 100%;
-    border: none;
-    display: inline-block;
-    text-align: end;
-    position: relative;
-    margin: 0;
-    padding: 0;
-    padding-right: 5%;
-    margin-block: 0;
-    margin-inline: 0;
+  height: 100%;
+  border: none;
+  display: inline-block;
+  text-align: end;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  padding-right: 5%;
+  margin-block: 0;
+  margin-inline: 0;
 }
 
 .span-quest {
-    border: none;
-    position: relative;
-    top: 10%;
-    font-size: var(--questFontSize);
-    font-weight: normal;
-    font-style: normal;
-    line-height: 1;
-    letter-spacing: normal;
+  border: none;
+  position: relative;
+  top: 10%;
+  font-size: var(--questFontSize);
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
   text-transform: none;
   white-space: nowrap;
   overflow: hidden;
@@ -199,41 +204,41 @@ body {
 
 /* ---------------------------------------------------------- */
 .output-parsed {
-    height: 100%;
-    border: none;
-    display: inline-block;
-    text-align: end;
-    position: relative;
-    margin: 0;
-    padding: 0;
-    padding-right: 5%;
-    margin-block: 0;
-    margin-inline: 0;
+  height: 100%;
+  border: none;
+  display: inline-block;
+  text-align: end;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  padding-right: 5%;
+  margin-block: 0;
+  margin-inline: 0;
 }
 
 .span-pars {
-    border: none;
-    position: relative;
-    top: 10%;
-    font-size: var(--parseFontSize);
-    font-weight: normal;
-    font-style: normal;
-    line-height: 1;
-    letter-spacing: normal;
-    text-transform: none;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: var(--colorParse);
+  border: none;
+  position: relative;
+  top: 10%;
+  font-size: var(--parseFontSize);
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--colorParse);
 }
 
 /* ---------------------------------------------------------- */
 .output-answer {
-    height: 100%;
-    border: none;
-    display: inline-block;
-    text-align: end;
-    position: relative;
+  height: 100%;
+  border: none;
+  display: inline-block;
+  text-align: end;
+  position: relative;
   margin: 0;
   padding: 0;
   padding-right: 5%;
@@ -277,7 +282,6 @@ body {
   color: orange;
   border: none;
 }
-
 
 .button-num {
   font-size: 111%;
@@ -332,7 +336,6 @@ body {
 .btnG:hover {
   background-color: rgb(80, 202, 80);
 }
-
 
 .button-ac {
   font-size: 107%;
@@ -393,4 +396,3 @@ body {
   word-wrap: normal;
   direction: ltr;
 }
-
