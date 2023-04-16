@@ -2,10 +2,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  /*font-family: Verdana, Geneva, Tahoma;*/
-  font-family: Electrolize;
-  font-weight: normal;
-  /* font-size: 5vh; */
+  font-family: Verdana, Geneva, Tahoma;
 }
 
 ::placeholder {
@@ -16,6 +13,9 @@ html {
   max-width: max-content;
   max-height: max-content;
   margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }
 
 body {
@@ -40,6 +40,20 @@ body {
   background-color: rgba(0, 0, 0, 0.7);
   margin: 0;
   padding: 0;
+}
+
+#root {
+  background-color: rgba(0, 0, 0, 0.7);
+  /*border: 3px solid blue;*/
+  margin: 0;
+  padding: 0;
+  display: grid;
+  width: var(--widthRoot);
+  height: var(--heightRoot);
+  min-width: var(--minWidthRoot);
+  max-width: var(--maxWidthRoot);
+  min-height: var(--minHeightRoot);
+  max-height: var(--maxHeightRoot);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -47,17 +61,15 @@ body {
   transform: translate(-50%, -50%);
 }
 
-#root {
-  margin: 0;
-  padding: 0;
-  display: grid;
-  width: var(--widthRoot);
-  height: var(--heightRoot);
-  max-width: var(--maxWidthRoot);
-  min-width: var(--minWidthRoot);
-  max-height: var(--maxHeightRoot);
-  min-height: var(--minHeightRoot);
-}
+/* ---------------------------------------------------------- */
+
+/* ---------------------------------------------------------- */
+
+/* ---------------------------------------------------------- */
+
+/* ---------------------------------------------------------- */
+
+/* ---------------------------------------------------------- */
 
 .frame {
   margin: 0;
