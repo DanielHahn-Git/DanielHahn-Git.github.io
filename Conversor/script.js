@@ -101,7 +101,11 @@ function Calculator() {
         getDocSize();
   }, [land]);
 
-  
+  const ButtonCalc = (value) => {
+    return (
+      <button>{value}</button>
+      )
+  }
 
 
 
@@ -121,9 +125,11 @@ function Calculator() {
           </p>
         </div>
         ) : (
-        <div className='screen'>
-          <p className="output-title">teste</p>
-        </div>)}
+        <div>
+        <ButtonCalc value={'1'} className='btnW'/>
+        <ButtonCalc value={2} className='btnW'/>
+        </div>
+        )}
     </div>
   );
 }
