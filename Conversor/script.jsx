@@ -1,12 +1,10 @@
 const { useState } = React;
 
-function App() {
-  const [count, setCount] = useState(100);
-function Button(value) {  
+function Button(props) {
   const click = (e) => {
     console.log('click');
     let key = e.target.value;
-    console.log(key);
+    console.log(key + '  key');
     switch (key) {
       case '-':
         setCount(count => count - 1);
@@ -18,9 +16,15 @@ function Button(value) {
   }
   console.log('render');
   return (
-    <input type='button' onClick={click}/>
-    );
+    <input type='button' onClick={click} value={props.value} />
+  );
 }
+
+
+
+function App() {
+  const [count, setCount] = useState(100);
+
   console.log(count);
   return (
     <div>
