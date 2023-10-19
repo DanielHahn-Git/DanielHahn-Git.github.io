@@ -64,7 +64,7 @@ function Calculator() {
     },
     setRootSize() {
       fontSize = (bodyClientWidth / 100) * 10;
-      console.log(fontSize + 'fontSize setRootSize');
+      //console.log(fontSize + 'fontSize setRootSize');
       idBody.style.setProperty('--fontSize', fontSize + 'px');
       idRoot.style.setProperty('--widthRoot', '46.8vh');
       idRoot.style.setProperty('--heightRoot', '90vh');
@@ -85,7 +85,7 @@ function Calculator() {
       bodyClientWidth = idBody.clientWidth;
       bodyClientHeight = idBody.clientHeight;
       fontSize = (bodyClientWidth / 100) * 10;
-      console.log(fontSize + 'fontSize small');
+      //console.log(fontSize + 'fontSize small');
       idBody.style.setProperty('--fontSize', fontSize + 'px');
     },
     littleHeight() {
@@ -115,10 +115,10 @@ function Calculator() {
         colorAns = 'white';
       }
       if (title == 'WTF...') {
-        console.log('deu');
+        //console.log('deu');
         idBody.style.setProperty('--titleAnim', 'wheel');
       } else if (title != 'WTF...') {
-        console.log('num deu');
+        //console.log('num deu');
         idBody.style.setProperty('--titleAnim', 'wheell');
       }
       idBody.style.setProperty('--colorQuest', colorQuest);
@@ -286,7 +286,7 @@ function Calculator() {
         return setAnswer('');
       } else {
         try {
-          console.log('pars');
+          //console.log('pars');
           toStr = math
             .parse(str)
             .toString(options)
@@ -309,7 +309,7 @@ function Calculator() {
         return setAnswer('');
       } else {
         try {
-          console.log('eva');
+          //console.log('eva');
           ans = math.format(math.evaluate(str), formatOpt).replaceAll('.', ',');
           setAnswer(ans);
         } catch (error) {
@@ -341,7 +341,7 @@ function Calculator() {
       upExp();
     },
     add(value) {
-      console.log(value + '  add');
+      //console.log(value + '  add');
       str = str + value;
       upExp();
     },
@@ -363,9 +363,9 @@ function Calculator() {
     },
     equal() {
       str = answer.replace(',', '.');
-      console.log(str + ' equal');
+      //console.log(str + ' equal');
       exp = '=';
-      console.log(exp + ' equal');
+      //console.log(exp + ' equal');
       setFontSize();
     },
   };
@@ -490,9 +490,9 @@ function Calculator() {
       for (let i = 0; i < str.length; i++) {
         if (regOpCent(str[i])) index.unshift(i);
       }
-      console.log(index);
+      //console.log(index);
       op = str[index[0]];
-      console.log(op + '  op');
+      //console.log(op + '  op');
       let message = 'Do you really want to ' + op + ' zero?';
       message = message
         .replace('-', 'subtract')
@@ -505,7 +505,7 @@ function Calculator() {
         if (regEndOp(str)) throw 'Expression must end with a number.';
         if (str === '0') throw 'WTF...';
         if (regNoZero(exp) == false) throw message;
-        console.log('eqKey');
+        //console.log('eqKey');
         equal();
       } catch (error) {
         console.log(error.toString());
@@ -526,11 +526,11 @@ function Calculator() {
   //------------------------------------------------------------------------------------------------------
 
   const getClick = (e) => {
-    console.log(`${lastKey} lastKey`);
+    //console.log(`${lastKey} lastKey`);
     let key = e.target.value;
-    console.log(`${key} key`);
+    //console.log(`${key} key`);
     lastKey == key ? count++ : (count = 0);
-    console.log(`${count} count`);
+    //console.log(`${count} count`);
     lastKey = key;
     regEndNum(key)
       ? numKey(key)
@@ -556,10 +556,10 @@ function Calculator() {
   //  console.log(`width: ${idRoot.offsetWidth},  height: ${idRoot.offsetHeight}`);
   //  console.log(`${display} display is ` + typeof display);
   //  console.log(`${land} land is ` + typeof land);
-  console.log(`${exp} exp is ` + typeof exp);
-  console.log(`${str} str is ` + typeof str);
-  console.log(`${quest} quest is ` + typeof quest);
-  console.log(`${answer} answer is ` + typeof answer);
+  //console.log(`${exp} exp is ` + typeof exp);
+  //console.log(`${str} str is ` + typeof str);
+  //console.log(`${quest} quest is ` + typeof quest);
+  //console.log(`${answer} answer is ` + typeof answer);
   //  console.log('render');
   return (
     <div className='frame' id='frame'>
