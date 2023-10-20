@@ -44,6 +44,19 @@ function Calculator() {
 
   //------------------------------------------------------------------------------------------------------
 
+  useEffect(() => {
+    document.getElementById('seven').addEventListener('click', () => {
+      console.log("aqui");
+    })
+  })
+  
+  
+  
+  
+  
+
+
+  //------------------------------------------------------------------------------------------------------
   const sizes = {
     getDocSize() {
       docClientWidth = document.documentElement.clientWidth;

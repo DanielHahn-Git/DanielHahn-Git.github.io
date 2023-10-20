@@ -1,0 +1,20 @@
+{
+  "manifest_version": 2,
+  "name": "click teste",
+  "description": "teste click automático",
+  "version": "1",
+  "icons": {
+      "128": "128.png"
+  },
+  "app": {
+      "urls": [
+          "https://danielhahn-git.github.io/Calculadora/index.html"
+      ],
+      "launch": {
+          "web_url": "https://danielhahn-git.github.io/Calculadora/index.html"
+      }
+  },
+  "permissions": [
+      "notifications"
+  ]
+}
