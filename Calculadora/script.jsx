@@ -44,11 +44,11 @@ function Calculator() {
 
   //------------------------------------------------------------------------------------------------------
 
-  useEffect(() => {
+  /* useEffect(() => {
     document.getElementById('seven').addEventListener('click', () => {
       console.log("aqui");
     })
-  })
+  }) */
   
   
   
