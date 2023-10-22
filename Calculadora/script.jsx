@@ -599,7 +599,7 @@ function Calculator() {
         </div>
       ) : (
         <div className='main-calc'>
-          <div className='screen'>
+          <div className='screen' id="screen">
             <p className='output-title'>
               <span className='btnF span-title' ref={titleRef}>
                 {title}
