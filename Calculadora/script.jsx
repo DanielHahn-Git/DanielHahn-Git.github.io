@@ -598,7 +598,7 @@ function Calculator() {
           </button>
         </div>
       ) : (
-        <div className='main-calc'>
+        <div className='main-calc' id="main-calc">
           <div className='screen' id="screen">
             <p className='output-title' id="output-title">
               <span className='btnF span-title' id="span-title" ref={titleRef}>
