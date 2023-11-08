@@ -139,7 +139,7 @@ const CountDown = () => {
       <h1 className="border">Pomodoro Timer</h1>
       </div>
       <div className="countdown">
-      <audio id="beep" ref={audioRef} src="beep.mp3" controls={false} 
+      <audio id="beep" ref={audioRef} src="beebeebee.mp3" controls={false} 
       ></audio>
       <div className="count-title-div">
       <h3 id="timer-label" className="count-title">{timerType}</h3>
