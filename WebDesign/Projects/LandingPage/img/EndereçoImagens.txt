@@ -1,8 +1,0 @@
-p10_mono https://d1nl8byu0zovrm.cloudfront.net/Custom/Content/Products/20/93/2093_plug-neutrik-p10-ouro-black-pr-6706-np2x-b_m2_637747318253783517.jpg
-
-p10_stereo https://http2.mlstatic.com/D_NQ_NP_822787-MLB47425631155_092021-W.jpg
-
-xlr https://http2.mlstatic.com/D_NQ_NP_912460-MLB41048769207_032020-V.jpg
-
-
-https://cdn-icons-png.flaticon.com/512/3274/3274550.png
